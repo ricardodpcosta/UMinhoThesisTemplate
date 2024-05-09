@@ -46,6 +46,33 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 ---
 
+## Preamble
+
+```latex
+\documentclass[a4paper,12pt,twoside]{report}
+% document title
+%\def\doctitle{}
+% document title
+%\def\docauthor{}
+% document language
+%\def\doclanguage{portuguese}
+% formatting
+\input{preamble/preamble}
+% nomenclature
+%\input{include/preliminaries/nomencl}
+% leave this uncommented for a bibliography with Sortedbib
+%\input{bibliography/references2.tex}
+% leave this uncommented to convert chapters into sections
+%\convertchaptersintosections
+% customize title fonts (can also be defined for each chapter individually)
+%\chaptertitlefont{}
+%\sectiontitlefont{}
+%\subsectiontitlefont{}
+%\subsubsectiontitlefont{}
+%\paragraphtitlefont{}
+% include here your personal commands
+```
+
 ## Covers and title page
 
 - Covers and title pages used in this template are generated outside LaTeX and then included into the compiled PDF document.
@@ -223,9 +250,9 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 - Individual references sections are included at the end of each chapter and, in that case, BibTeX needs to be used since the other approaches are not capable of producing the same results.
 
-- The compilation becomes more complex as several stages are required and, therefore, executing the bash script `makemain.sh` in provided in this template folder for Unix-based systems is easier than to manually executing all the compilation steps required.
+- The compilation becomes more complex as several stages are required and, therefore, executing the bash script `makemain.sh` is easier than to manually executing all the compilation steps required.
 
-- If using individual bibliographies for the chapters, leave commented all the commands provided below and uncomment the corresponding commands provided in each chapter.
+- If using individual bibliographies for the chapters, leave commented all the commands provided for the bibliography in `main.tex` and uncomment the corresponding commands provided in each chapter.
 
 ```latex
 % leave this uncommented for an individual chapter bibliography
