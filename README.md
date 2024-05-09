@@ -1,8 +1,6 @@
 # UMinho Thesis Template
 
-_UMinho Thesis Template_ is a LaTeX template for academic works formatted according to the rules for doctoral theses and master works (dissertations, internship reports, projects, etc.) from the University of Minho officially published in "Despacho RT-31/2019".
-
-It is recommended to read carefully the official documents in [_UMinho Thesis Official_](https://github.com/ricardodpcosta/UMinhoThesisOfficial) and check whether modifications to the formatting rules currently in this template have been recently introduced.
+_UMinho Thesis Template_ is a LaTeX template for academic works formatted according to the rules for doctoral theses and master works (dissertations, internship reports, projects, etc.) from the University of Minho officially published in "Despacho RT-31/2019". It is recommended to read carefully the official documents in [_UMinho Thesis Official_](https://github.com/ricardodpcosta/UMinhoThesisOfficial) and check whether modifications to the formatting rules currently in this template have been recently introduced.
 
 Below you can find a tutorial with a sequence of steps to guide you in adapting this template to your work, and further instructions are provided in the included files. Follow the steps and make sure the template compiles without errors after the necessary changes are made according to the instructions.
 
@@ -160,7 +158,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 ## Bibliography
 
-There are several approaches for bibliography management with LaTeX and this template includes three options (Bibitems, BibTeX, and SortedBib), which you can choose from the provided templates below
+- There are several approaches for bibliography management with LaTeX and this template includes three options (Bibitems, BibTeX, and SortedBib), which you can choose from the provided templates below
 
 ### Bibitems
 
