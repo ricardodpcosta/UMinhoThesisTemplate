@@ -1,6 +1,6 @@
 # UMinho Thesis Template
 
-_UMinho Thesis Template_ is a LaTeX template for academic works formatted according to the rules for doctoral theses and master works (dissertations, internship reports, projects, etc.) from the University of Minho officially published in "Despacho RT-31/2019". It is recommended to read carefully the official documents in [_UMinho Thesis Official_](https://github.com/ricardodpcosta/UMinhoThesisOfficial) and check whether modifications to the formatting rules currently in this template have been recently introduced.
+_UMinho Thesis Template_ is a LaTeX template for academic works formatted according to the rules for doctoral theses and master works (dissertations, internship reports, projects, etc.) from the University of Minho officially published in "Despacho RT-31/2019". It is recommended to read carefully the official documents in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) and check whether modifications to the formatting rules currently in this template have been recently introduced.
 
 Below you can find a tutorial with a sequence of steps to guide you in adapting this template to your work, and further instructions are provided in the included files. Follow the steps and make sure the template compiles without errors after the necessary changes are made according to the instructions.
 
@@ -20,11 +20,11 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 - Executing the bash script `makemain.sh` for cross-references of bibliography entries to be correctly generated and referenced in the generated PDF document.
 
-- Recommended LaTeX editor is Texmaker (https://www.xm1math.net/texmaker/) and this template is also available in Overleaf.
+- Recommended LaTeX editor is [Texmaker](https://www.xm1math.net/texmaker/) and this template is also available in Overleaf.
 
 ---
 
-## Template structure
+## Structure
 
 - In `preamble/` are defined the template formatting rules with the necessary packages and commands. These files should not be usually modified at the risk of breaking the document format. If certain packages and commands, other than the ones already included and defined in the template, are necessary to meet specific the needs of your document, consider doing so in `main.tex`.
 
