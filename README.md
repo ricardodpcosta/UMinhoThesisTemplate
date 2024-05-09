@@ -23,21 +23,21 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 The official font for the doctoral theses and master works from the University of Minho is _NewsGotT_, which is already installed for LaTeX in `preamble/newsgott/`, with the TFM files already generated from the TTF sources provided officially. If these files need to be regenerated, you can execute the bash script `makefont.sh` (the `ttf2tfm` utility needs to be installed on your computer).
 
 
-## 1. Covers and title page
+## Covers and title page
 
-1.1 - Covers and title pages used in this template are generated outside LaTeX and then included into the compiled PDF document.
+1. Covers and title pages used in this template are generated outside LaTeX and then included into the compiled PDF document.
 
-1.2 - Templates for the covers in SVG format for doctoral thesis and master works are provided, which can be edited with the appropriate software (Inkscape, etc.) and then saved in PDF format.
+1. Templates for the covers in SVG format for doctoral thesis and master works are provided, which can be edited with the appropriate software (Inkscape, etc.) and then saved in PDF format.
 
-1.3 - Make sure the official font (NewsGotT) is installed on your computer before editing the cover templates (the source font files are provided in UMinhoThesisOfficial for installation).
+1. Make sure the official font (NewsGotT) is installed on your computer before editing the cover templates (the source font files are provided in UMinhoThesisOfficial for installation).
 
-1.4 - Choose below the cover and the title page for your work (doctoral thesis or master work) and comment/uncomment the predefined selection as necessary.
+1. Choose below the cover and the title page for your work (doctoral thesis or master work) and comment/uncomment the predefined selection as necessary.
 
-1.4 - Edit the corresponding SVG files available in folder covers/ with your personal and work data as necessary (author name, work title, work date, academic course, supervisors names, etc.).
+1. Edit the corresponding SVG files available in folder covers/ with your personal and work data as necessary (author name, work title, work date, academic course, supervisors names, etc.).
 
-1.5 - Save in the same folder the edited SVG files in PDF format (only change the extension)
+1. Save in the same folder the edited SVG files in PDF format (only change the extension)
 
-1.6 - Additional covers for others UOEIs are provided in UMinhoThesisOfficial in AI format to be edited and converted to PDF format and saved in folder covers/
+1. Additional covers for others UOEIs are provided in UMinhoThesisOfficial in AI format to be edited and converted to PDF format and saved in folder covers/
 
 ```
 % select font
