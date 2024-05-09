@@ -49,29 +49,29 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 ## Preamble
 
 ```latex
-\documentclass[a4paper,12pt,twoside]{report}
 % document title
 %\def\doctitle{}
 % document title
 %\def\docauthor{}
-% document language
+% document language (default is english)
 %\def\doclanguage{portuguese}
-% formatting
+% formatting rules
 \input{preamble/preamble}
-% nomenclature
+% nomenclature list
 %\input{include/preliminaries/nomencl}
 % leave this uncommented for a bibliography with Sortedbib
 %\input{bibliography/references2.tex}
 % leave this uncommented to convert chapters into sections
 %\convertchaptersintosections
-% customize title fonts (can also be defined for each chapter individually)
+% customise title fonts (can also be defined for each chapter individually)
 %\chaptertitlefont{}
 %\sectiontitlefont{}
 %\subsectiontitlefont{}
 %\subsubsectiontitlefont{}
 %\paragraphtitlefont{}
-% include here your personal commands
 ```
+
+---
 
 ## Covers and title page
 
