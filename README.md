@@ -25,21 +25,21 @@ The official font for the doctoral theses and master works from the University o
 
 ## Covers and title page
 
-1. Covers and title pages used in this template are generated outside LaTeX and then included into the compiled PDF document.
+- Covers and title pages used in this template are generated outside LaTeX and then included into the compiled PDF document.
 
-1. Templates for the covers in SVG format for doctoral thesis and master works are provided, which can be edited with the appropriate software (Inkscape, etc.) and then saved in PDF format.
+- Templates for the covers in SVG format for doctoral thesis and master works are provided, which can be edited with the appropriate software (Inkscape, etc.) and then saved in PDF format.
 
-1. Make sure the official font (NewsGotT) is installed on your computer before editing the cover templates (the source font files are provided in UMinhoThesisOfficial for installation).
+- Make sure the official font (NewsGotT) is installed on your computer before editing the cover templates (the source font files are provided in UMinhoThesisOfficial for installation).
 
-1. Choose below the cover and the title page for your work (doctoral thesis or master work) and comment/uncomment the predefined selection as necessary.
+- Choose below the cover and the title page for your work (doctoral thesis or master work) and comment/uncomment the predefined selection as necessary.
 
-1. Edit the corresponding SVG files available in folder covers/ with your personal and work data as necessary (author name, work title, work date, academic course, supervisors names, etc.).
+- Edit the corresponding SVG files available in folder covers/ with your personal and work data as necessary (author name, work title, work date, academic course, supervisors names, etc.).
 
-1. Save in the same folder the edited SVG files in PDF format (only change the extension)
+- Save in the same folder the edited SVG files in PDF format (only change the extension)
 
-1. Additional covers for others UOEIs are provided in UMinhoThesisOfficial in AI format to be edited and converted to PDF format and saved in folder covers/
+- Additional covers for others UOEIs are provided in UMinhoThesisOfficial in AI format to be edited and converted to PDF format and saved in folder covers/
 
-```
+```latex
 % select font
 \usecustomfont
 % front page
@@ -58,6 +58,159 @@ The official font for the doctoral theses and master works from the University o
 % leave this uncommented for a master work
 %\includepdf[pages=-,offset=0 -0]{covers/master_title_page.pdf}
 ```
+
+---
+
+## Preliminaries
+
+- The following pages are required to be included in the doctoral theses and master works, with the exception of the acknowledgements and the publications and awards sections.
+
+- Comment the line of the acknowledgements and the publications and awards if you do not want them to be included in the generated PDF document.
+
+- Open each of the files below, edit the personal and work data as necessary, and follow the instructions provided to complete the required information.
+
+- The template automatically generates a table of contents and lists of figures, tables, and nomenclature for your work.
+
+- Choose below the indexes to be generated and comment/uncomment the predefined selection as necessary. For instance, if your work has no tables or you do not want them to be indexed in a list of tables, comment both the commands `\dominilot` and `\listoftables`, otherwise an empty list will be generated.
+
+
+```latex
+% preliminaries format
+\preliminariesformat
+\input{preliminaries/redistribution}
+\input{preliminaries/acknowledgements}
+\input{preliminaries/statement_of_integrity}
+\input{preliminaries/resumo}
+\input{preliminaries/abstract}
+\input{preliminaries/publications_and_awards}
+% leave this uncommented for a table of contents
+\dominitoc
+\tableofcontents
+% leave this uncommented for a list of figures
+\dominilof
+\listoffigures
+% leave this uncommented for a list of tables
+\dominilot
+\listoftables
+% leave this uncommented for a nomenclature
+%\printnomenclature
+```
+
+---
+
+# Chapters and sections
+
+- There are two formats for the chapters (plain chapters and article chapters), which you can choose from the provided templates below.
+
+- Plain chapters have their sections beginning on the same page as the title, article chapters have an abstract and keywords on the first page while sections begin on the next page.
+
+- Article chapters are more appropriate when your work is based on articles or when you want to include a general introduction/motivation to the topic before actually starting developing it.
+
+- Each chapter corresponds to a different folder named chap1, chap2, chap3, etc., where the necessary sections, bibliography, figures, etc. are included for the sake of organisation.
+
+- You can find below a template for a plain chapter (chap1) and an article chapter (chap2) that you can adapt to your work.
+
+- Comment/uncomment the chapters as necessary and duplicate the provided template folders to create new chapters for your work.
+
+- Open each of the chapters below and follow the instructions provided.
+
+```latex
+% page numbering
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+% leave this uncommented for chapter 1
+\input{chap1/chap1.tex}
+% leave this uncommented for chapter 2
+\input{chap2/chap2.tex}
+% leave this uncommented for chapter 3
+%\input{chap3/chap3.tex}
+% leave this uncommented for chapter 4
+%\input{chap4/chap4.tex}
+% leave this uncommented for chapter 5
+%\input{chap5/chap5.tex}
+% leave this uncommented for chapter 6
+%\input{chap6/chap6.tex}
+```
+
+## Bibliography
+
+- There are several approaches for bibliography management with LaTeX and this template includes three options (Bibitems, BibTeX, and SortedBib), which you can choose from the provided templates below
+
+### Bibitems
+
+- Bibitems consists of a list of bibliography items supplied with the command \bibitem, which later can be referenced with the command \cite.
+
+- It is the simplest approach of creating a bibliography for your work, but you have to manually formatting the bibliographic entries according to some style you chose.
+
+- Moreover, the reference numbers are attributed according to the order they are provided to LaTeX (and not according to the order of citation), and all the bibliographic entries are present in the references section of the generated PDF document, even if they are not cited.
+
+- Compiling with pdflatex twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document.
+
+### BibTex
+
+- BibTeX consists of a bibliography database of formatting independent information of the references for the work.
+
+- Each bibliographic entry has a given type (article, book, inproceedings, etc.) to determine the automatic formatting of the reference in the generated PDF document.
+
+- Moreover, the reference numbers are attributed according to the order they are cited (and not according to the order they are provided to LaTeX), and only the cited bibliographic entries are present in the references section of the generated PDF document.
+
+- Compiling with the sequence pdflatex, bibtex, and finally pdflatex twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document.
+
+- Several bibliography files can be provided to the command \bibliography separated with commas, and the file extension .bib is required for the bibliography databases.
+
+### SortedBib
+
+- SortedBib is similar to Bibitems, but the command \bibitem needs to be replaced with \addbib and the command \cite needs to be replaced with \citebib (you need to perform these changes in this template if you choose to use SortedBib)
+
+- It keeps the simplicity of the Bibitems approach of creating a bibliography for your work, but the reference numbers are attributed as in BibTeX, that is, according to the order they are cited (and not according to the order they are provided to LaTeX), and only the cited bibliographic entries are present in the references section of the generated PDF document.
+
+- Compiling with pdflatex twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document as for Bibitems.
+
+- Although it avoids the compilation complexity of the BibTeX approach, you still have to manually formatting the bibliographic entries according to some style you chose as in Bibitems.
+
+- The bibliography file needs to be provided with the command \input placed before the command \begin{document} and after the preamble.
+
+
+### Individual bibliography
+
+- Separating the bibliography by chapters is useful when each chapter needs to have its own bibliography (see further instructions in the template chapters provided)
+
+- Individual references sections are included at the end of each chapter and, in that case, BibTeX needs to be used since the other approaches are not capable of producing the same results.
+
+- The compilation becomes more complex as several stages are required and, therefore, executing the bash script `makemain.sh` in provided in this template folder for Unix-based systems is easier than to manually executing all the compilation steps required.
+
+- If using individual bibliographies for the chapters, leave commented all the commands provided below and uncomment the corresponding commands provided in each chapter.
+
+```latex
+% leave this uncommented for a bibliography with Bibitems
+\bibliographyformat
+\begin{thebibliography}{1}
+\input{bibliography/references1.tex}
+\end{thebibliography}
+% leave this uncommented for a bibliography with BibTeX
+%\bibliographyformat
+%\bibliography{bibliography/references.bib}
+% leave this uncommented for a bibliography with SortedBib
+%\bibliographyformat
+%\begin{thebibliography}{1}
+%\printbib
+%\end{thebibliography}
+```
+
+---
+
+## Appendices
+
+- Appendices can be introduced as regular chapters replacing the command `\chapter{}` with `\appendixchapter`, after which sections and subsections can be introduced normally.
+
+- Appendices can also be introduced as sections inside chapters replacing the command `\section{}` with `\appendixsection`, after which subsections can be introduced normally.
+
+- In both cases, the command `\noappendix` should be placed at the end of the chapter or section corresponding to the appendices.
+
+
+
+
 
 
 
