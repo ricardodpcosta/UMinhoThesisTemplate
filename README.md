@@ -108,9 +108,7 @@ The official font for the doctoral theses and master works from the University o
 
 - Each chapter corresponds to a different folder named chap1, chap2, chap3, etc., where the necessary sections, bibliography, figures, etc. are included for the sake of organisation.
 
-- You can find below a template for a plain chapter (chap1) and an article chapter (chap2) that you can adapt to your work.
-
-- Comment/uncomment the chapters as necessary and duplicate the provided template folders to create new chapters for your work.
+- You can find below a template for a plain chapter (chap1) and an article chapter (chap2) that you can adapt to your work. Comment/uncomment the chapters as necessary and duplicate the provided template folders to create new chapters for your work.
 
 - Open each of the chapters below and follow the instructions provided.
 
@@ -133,19 +131,29 @@ The official font for the doctoral theses and master works from the University o
 %\input{chap6/chap6.tex}
 ```
 
+---
+
 ## Bibliography
 
-- There are several approaches for bibliography management with LaTeX and this template includes three options (Bibitems, BibTeX, and SortedBib), which you can choose from the provided templates below
+There are several approaches for bibliography management with LaTeX and this template includes three options (Bibitems, BibTeX, and SortedBib), which you can choose from the provided templates below
 
 ### Bibitems
 
-- Bibitems consists of a list of bibliography items supplied with the command \bibitem, which later can be referenced with the command \cite.
+- Bibitems consists of a list of bibliography items supplied with the command `\bibitem`, which later can be referenced with the command `\cite{}`.
 
 - It is the simplest approach of creating a bibliography for your work, but you have to manually formatting the bibliographic entries according to some style you chose.
 
 - Moreover, the reference numbers are attributed according to the order they are provided to LaTeX (and not according to the order of citation), and all the bibliographic entries are present in the references section of the generated PDF document, even if they are not cited.
 
-- Compiling with pdflatex twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document.
+- Compiling with `pdflatex` twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document.
+
+```latex
+% leave this uncommented for a bibliography with Bibitems
+\bibliographyformat
+\begin{thebibliography}{1}
+\input{bibliography/references1.tex}
+\end{thebibliography}
+```
 
 ### BibTex
 
@@ -155,48 +163,46 @@ The official font for the doctoral theses and master works from the University o
 
 - Moreover, the reference numbers are attributed according to the order they are cited (and not according to the order they are provided to LaTeX), and only the cited bibliographic entries are present in the references section of the generated PDF document.
 
-- Compiling with the sequence pdflatex, bibtex, and finally pdflatex twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document.
+- Compiling with the sequence `pdflatex`, `bibtex`, and finally `pdflatex` twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document.
 
-- Several bibliography files can be provided to the command \bibliography separated with commas, and the file extension .bib is required for the bibliography databases.
+- Several bibliography files can be provided to the command `\bibliography{}` separated with commas, and the file extension .bib is required for the bibliography databases.
+
+```latex
+% leave this uncommented for a bibliography with BibTeX
+\bibliographyformat
+\bibliography{bibliography/references.bib}
+
+```
 
 ### SortedBib
 
-- SortedBib is similar to Bibitems, but the command \bibitem needs to be replaced with \addbib and the command \cite needs to be replaced with \citebib (you need to perform these changes in this template if you choose to use SortedBib)
+- SortedBib is similar to Bibitems, but the command `\bibitem{}` needs to be replaced with `\addbib{}` and the command `\cite{}` needs to be replaced with `\citebib{}` (you need to perform these changes in this template if you choose to use SortedBib)
 
 - It keeps the simplicity of the Bibitems approach of creating a bibliography for your work, but the reference numbers are attributed as in BibTeX, that is, according to the order they are cited (and not according to the order they are provided to LaTeX), and only the cited bibliographic entries are present in the references section of the generated PDF document.
 
-- Compiling with pdflatex twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document as for Bibitems.
+- Compiling with `pdflatex` twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document as for Bibitems.
 
 - Although it avoids the compilation complexity of the BibTeX approach, you still have to manually formatting the bibliographic entries according to some style you chose as in Bibitems.
 
-- The bibliography file needs to be provided with the command \input placed before the command \begin{document} and after the preamble.
+- The bibliography file needs to be provided with the command `\input{}` placed before the command `\begin{document}` and after the preamble.
 
+```latex
+% leave this uncommented for a bibliography with SortedBib
+\bibliographyformat
+\begin{thebibliography}{1}
+\printbib
+\end{thebibliography}
+```
 
 ### Individual bibliography
 
-- Separating the bibliography by chapters is useful when each chapter needs to have its own bibliography (see further instructions in the template chapters provided)
+- Separating the bibliography by chapters is useful when each chapter needs to have its own bibliography (see further instructions in the template chapters provided).
 
 - Individual references sections are included at the end of each chapter and, in that case, BibTeX needs to be used since the other approaches are not capable of producing the same results.
 
 - The compilation becomes more complex as several stages are required and, therefore, executing the bash script `makemain.sh` in provided in this template folder for Unix-based systems is easier than to manually executing all the compilation steps required.
 
 - If using individual bibliographies for the chapters, leave commented all the commands provided below and uncomment the corresponding commands provided in each chapter.
-
-```latex
-% leave this uncommented for a bibliography with Bibitems
-\bibliographyformat
-\begin{thebibliography}{1}
-\input{bibliography/references1.tex}
-\end{thebibliography}
-% leave this uncommented for a bibliography with BibTeX
-%\bibliographyformat
-%\bibliography{bibliography/references.bib}
-% leave this uncommented for a bibliography with SortedBib
-%\bibliographyformat
-%\begin{thebibliography}{1}
-%\printbib
-%\end{thebibliography}
-```
 
 ---
 
