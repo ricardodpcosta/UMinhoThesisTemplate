@@ -1,0 +1,79 @@
+%=============================================================
+% Ricardo Costa, December, 2021
+%=============================================================
+% - Article chapter template
+% - In this chapter format, an abstract and keywords appear on the first page and the sections start
+% on the next page
+% - A table of contents and list of figures and tables can be generated for this chapter individually,
+% and for that uncomment the commands \minitoc, \minilof, and \minilot below
+% - If any of the above commands are used, also uncommented the command \newpage below for a
+% page break (in that case, sections start on the next available page)
+% - Sections in this chapter are also included in different files for the sake of organization (especially
+% useful for large documents) but a single file with all the sections can also be used
+% - All the sections, figures, tables, and any other material used in this chapter are in folder include/
+% but any other structure can be used providing the appropriate paths to the commands
+% - A bibliography can be generated for this chapter individually, and for that uncomment the last
+% commands at the end of this file and provide the path to the bibliography file
+% - The last three commands are suffixed with "chapi", which is an identifier for the bibliography
+% included in the current chapter, in that case chap1
+% - Replace the suffix "chapii" with "chapiii", "chapiv", "chapv", "chapvi", etc. according to the current
+% chapter number and for each chapter you want to generate an individual bibliography (for instance,
+% in "chap6.tex" replace the suffix "chapii" with "chapvi" in the last three commands)
+% - If individual bibliographies are used for each chapter, comment the last commands in the main
+% file to not generate a global bibliography (it is recommended to have either a global bibliography
+% or individual bibliographies for each chapter)
+% - Consider using the prefix "chapX:" (replace X with the chapter number) in each label you create
+% for the sections, figures, tables, equations, and bibliography to avoid duplicate references between
+% chapters (for instance, \label{chap2:some_figure}, @article{chap2:some_paper}, etc.)
+%=============================================================
+
+% do not comment or modify
+\chaptersformat
+
+% chapter title
+\chapter{Very high-order accurate finite volume scheme for the convection-diffusion equation with general boundary conditions on arbitrary curved boundaries}
+
+% do not comment or modify
+\afterpage{\global\bodystyleheadertrue}
+
+% leave this uncommented to cite the associated article as a footnote
+\blfootnote{This chapter was adapted from R. Costa, J.M. N\'obrega, S. Clain, G.J. Machado, and R. Loub\`ere, Very high-order accurate finite volume scheme for the convection-diffusion equation with general boundary conditions on arbitrary curved domains, Int. J. Numer. Meth. Engrg. 117(2) (2019) 188--220, DOI: https://doi.org/10.1002/nme.5953}
+
+% chapter abstract
+\begin{chapterabstract}
+Obtaining very high-order accurate solutions in curved domains is a challenging task as the accuracy of conventional discretization methods, usually developed for polygonal domains, dramatically reduce without an appropriate treatment of boundary conditions.
+The classical techniques to preserve the optimal convergence order are found in the context of finite element and finite volume methods, which often rely on curved mesh elements to fit the associated curved boundary.
+Such techniques demand sophisticated meshing algorithms, cumbersome quadrature rules for integration, and complex non-linear transformations to map the curved mesh elements onto the reference polygonal ones.
+In this regard, the Reconstruction for Off-site Data method provides very high-order accurate polynomial reconstructions on arbitrary smooth curved boundaries, enabling the integration of the governing equations in polygonal mesh elements and, therefore, avoiding the use of complex integration quadrature rules or non-linear transformations.
+The method was initially introduced for Dirichlet boundary conditions, and the present work proposes an extension for general boundary conditions, which represents an important advance for real context applications.
+A generic framework to compute polynomial reconstructions is also developed based on the least-squares method, which handles general constraints and further improves the algorithm.
+The proposed methods are applied to solve the convection-diffusion equation with a finite volume discretization in general unstructured meshes.
+A comprehensive numerical benchmark is provided to verify and assess the accuracy, convergence orders, robustness, and efficiency of the method.
+The results prove that the method is capable of fulfilling boundary conditions appropriately on arbitrary smooth curved boundaries, and a very high-order of convergence is effectively achieved.
+\end{chapterabstract}
+
+% chapter keywords
+\begin{chapterkeywords}
+Very high-order accurate finite volume scheme, arbitrary smooth curved boundaries, general boundary conditions, polynomial reconstructions, least-squares method, reconstruction for off-site data method, convection-diffusion equation
+\end{chapterkeywords}
+
+% leave this uncommented for an individual chapter table of contents
+%\minitoc
+% leave this uncommented for an individual chapter list of figures
+%\minilof
+% leave this uncommented for an individual chapter list of tables
+%\minilot
+% leave this uncommented if any of the above commands are used
+%\newpage
+
+% include section files
+\input{chap2/include/sections/sec1_introduction}
+\input{chap2/include/sections/sec2_mathematical_formulation}
+
+% leave this uncommented for an individual chapter bibliography
+%\chapterbibliographyformat
+%\nocitechapii{*}
+%\bibliographystylechapii{unsrt}
+%\bibliographychapii{chap2/include/sections/bibliography.bib}
+
+% end of file

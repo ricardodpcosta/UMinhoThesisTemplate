@@ -1,0 +1,36 @@
+\section{Introduction}
+\label{chap2:sec:introduction}
+
+The treatment of ever-increasing complexity problems in engineering has only been possible due to the capabilities of modern-day computational methods and high-performance computers.
+In what concerns to the numerical modelling, computational efficiency is usually determined based on the computational effort necessary to obtain a certain level of solution accuracy, leading to a trade-off between the convergence order of the method and the mesh characteristic size.
+In the absence of shocks or irregularities, increasing the convergence order is more efficient concerning computational resources than mesh refinement.
+However, obtaining very high-order accurate approximations is still a challenging task, and many developments in that field are to be made.
+
+The majority of the very high-order accurate methods (more than the second-order) are specifically designed for polygonal (or polyhedral) domains and, usually, numerical difficulties in obtaining the optimal convergence order arise when handling boundary conditions prescribed on curved boundaries.
+For a short literature review on the topic, the reader is referred to the introduction section in R. Costa et al., 2018~\cite{chap2:2018costa1}, which is summarized in the following.
+The classical approach to handle boundary conditions on curved boundaries is based on the isoparametric element method~\cite{chap2:2016lehrenfeld,chap2:2017lehrenfeld}, which requires, on one side, the introduction of curved mesh elements and, on the other side, non-linear transformations to map the local curved mesh elements onto the reference polygonal ones.
+An alternative approach, dedicated to the finite volume method, was initially proposed by C. Ollivier-Gooch et al., 2002~\cite{chap2:2002ollivier}.
+The technique does not require non-linear transformations, but the main shortcoming remains, in particular, the meshing algorithm to generate curved mesh elements fitting curved boundaries in addition to the high-order accurate quadrature rules for numerical integration on non-polygonal mesh elements.
+As a consequence, handling arbitrary two- or three-dimensional curved elements turns out to be a cumbersome task, which results in significant computational costs~\cite{chap2:2009geuziane,chap2:2014wang,chap2:2015moxey}.
+
+R. Costa et al., 2018~\cite{chap2:2018costa1}, introduced a new approach in the finite volume context, the reconstruction for off-site data method (shortened to ROD method), which is capable of handling boundary conditions on arbitrary smooth curved boundaries with a very high-order of convergence.
+The novelty of the method is to use only polygonal mesh elements, overcoming the mismatch between the mesh boundary and the domain boundary.
+The method enforces the prescribed boundary conditions using polynomial reconstructions in the vicinity of the boundary, which are computed based on the constrained least-squares method.
+Moreover, the governing equations are integrated on polygonal mesh elements and, consequently, the numerical heat fluxes are determined solely on the boundaries of the polygonal cells.
+Therefore, no sophisticated meshing algorithms for curved mesh elements are required, nor non-linear transformations, nor cumbersome quadrature rules for integration in the curved elements.
+There are very few methods capable of handling curved domains with polygonal meshes, and most of them are limited to the first- or second-order of convergence.
+Recently an extension of the immersed boundary method to the fourth-order of convergence has been proposed in the framework of the Fourier spectral method~\cite{chap2:2016stein,chap2:2017stein}, which is able of handling arbitrary smooth curved domains.
+
+The ROD method was initially developed only for the steady-state two-dimensional convection-diffusion problem with Dirichlet boundary conditions.
+In the present work, essential developments are introduced to the method, namely, the handling of Neumann and Robin boundary conditions, which represents a fundamental advance for real context applications.
+Moreover, the development of a generic framework to compute polynomial reconstructions based on the least-squares method allows the handling of general constraints and improves the algorithm.
+
+The remaining sections of the chapter are organized as follows.
+Section~2 presents the model, the mesh, and the basic assumptions and notations.
+Section~3 introduces the generic framework to compute polynomial reconstructions based on the least-squares method.
+Section~4 is dedicated to the ROD method based on the previously introduced polynomial reconstructions and the Dirichlet, Neumann, and Robin boundary conditions on curved boundaries are addressed.
+Section~5 presents the very high-order accurate finite volume scheme based on the polynomial reconstructions and the ROD method.
+Section~6 provides a comprehensive numerical benchmark test suite to verify and assess the proposed method.
+The chapter is completed in Section~7 with the conclusions and some perspectives for future work.
+
+% end of file

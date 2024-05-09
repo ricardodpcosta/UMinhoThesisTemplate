@@ -1,0 +1,111 @@
+%======================================================================
+% Ricardo Costa, December, 2021
+%=======================================================================
+% REQUIRED PACKAGES
+%=======================================================================
+\usepackage{etoolbox}
+%=======================================================================
+% MAKE @ SYMBOL A LETTER
+%=======================================================================
+\makeatletter
+%=======================================================================
+% PRIVATE VARIABLES
+%=======================================================================
+%
+%=======================================================================
+% PUBLIC VARIABLES
+%=======================================================================
+% boolean values
+\def\nero@false{0}
+\def\nero@true{1}
+% references list
+\def\nero@biblist{}
+%=======================================================================
+% PRIVATE COMMANDS
+%=======================================================================
+% make variable never expand
+\def\nero@neverexpand{\noexpand\nero@neverexpand\noexpand}
+%=======================================================================
+% PUBLIC COMMANDS
+%=======================================================================
+% define a boolean variable
+\newcommand{\defboolean}[1]{%
+	\global\expandafter\def\csname nero@boolean@#1\endcsname{\nero@false}%
+}
+% set boolean as true
+\newcommand{\setbooleantrue}[1]{%
+	\global\expandafter\def\csname nero@boolean@#1\endcsname{\nero@true}%
+}
+% set boolean as false
+\newcommand{\setbooleanfalse}[1]{%
+	\global\expandafter\def\csname nero@boolean@#1\endcsname{\nero@false}%
+}
+% if/else structure if boolean is true
+\newcommand{\ifbooleantrue}[3]{%
+	\if\expandafter\csname nero@boolean@#1\endcsname\nero@true%
+		#2%
+	\else%
+		#3%
+	\fi%
+}
+% if/else structure if boolean is false
+\newcommand{\ifbooleanfalse}[3]{%
+	\if\expandafter\csname nero@boolean@#1\endcsname\nero@false%
+		#2%
+	\else%
+		#3%
+	\fi%
+}
+% never expand command
+\newcommand{\neverexpand}{\nero@neverexpand}
+% redefine expandable variables
+\newcommand{\redefineneverexpand}{\def\nero@neverexpand{\noexpand\nero@neverexpand\noexpand}}
+% relax no expandable variables
+\newcommand{\relaxneverexpand}{\def\nero@neverexpand{}}
+% user friendly neverexpand
+\newcommand{\inlinecommand}[1]{
+	\neverexpand #1
+}
+% cite a reference
+\newcommand{\citebib}[1]{%
+	% how to process each item
+	\renewcommand*{\do}[1]{%
+		\ifbooleanfalse{nero@bib@##1}{%
+			\global\edef\nero@biblist{\nero@biblist ##1,}%
+			\setbooleantrue{nero@bib@##1}%
+		}{%
+		}%
+	}%
+	% process list
+	\docsvlist{#1}%
+	\cite{#1}%
+}
+% write a reference
+\newcommand{\addbib}[2]{
+	%\ifcsname nero@bib@#1\endcsname
+	%	\PackageError{Nero}{Bib item '#1' already defined}{}
+	%	\stop
+	%\else
+		\global\expandafter\edef\csname nero@bib@#1\endcsname{#2}
+		\defboolean{nero@bib@#1}
+	%\fi	
+}
+% make bibliography
+\newcommand{\printbib}{
+	% how to process each item
+	\renewcommand{\do}[1]{
+		\expandafter\bibitem{##1}\expandafter\csname nero@bib@##1\endcsname
+	}
+	% process list
+		\expandafter\docsvlist\expandafter{\nero@biblist}
+}
+% clear bibliography
+\newcommand{\clearbib}{
+	\def\nero@biblist{}
+}
+%=======================================================================
+% MAKE @ SYMBOL AN OTHER
+%=======================================================================
+\makeatother
+%=============================================================
+% end of file

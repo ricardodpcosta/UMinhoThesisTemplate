@@ -1,0 +1,504 @@
+%=============================================================
+% Ricardo Costa, April, 2024
+%=============================================================
+% packages
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[fleqn]{amsmath}
+\usepackage{setspace}
+%\usepackage{sans}
+%\usepackage{cmbright}
+% unbreakable dashes
+\usepackage[shortcuts]{extdash}
+\usepackage{geometry}
+\geometry{inner=3.0cm,outer=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{hyphenat}
+\usepackage{array}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage{titletoc}
+\usepackage{titling}
+\usepackage[labelsep=colon]{caption}
+\usepackage{nextpage}
+\usepackage{fancyhdr}
+\usepackage{ifthen}
+\usepackage{booktabs}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[final]{pdfpages}
+\usepackage{etoolbox}
+\usepackage{mathtools}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{afterpage}
+\usepackage[tracking=true]{microtype}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage{minitoc}
+\usepackage{rotating}
+\usepackage{placeins}
+\usepackage{preamble/sortedbib}
+\usepackage[resetlabels]{preamble/multibib}
+\usepackage{empheq}
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+%\usepackage{amsmath}
+%\usepackage{bm}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage[scaled=1.0]{helvet}
+%\usepackage{amsfonts}
+%\usepackage{yhmath}
+%\usepackage{cmbright}
+% caligraphic font
+\usepackage{mathptmx}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\usepackage{mathtools}
+% italic greek symbols
+\let\Omega\varOmega
+\let\Gamma\varGamma
+\let\Phi\varPhi
+\let\Psi\varPsi
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\bm}[1]{\textrm{\textbf{\textit{#1}}}}
+% cross-referencing of equations
+\usepackage[sort&compress]{cleveref}
+\let\cref\labelcref
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+% no hyphenation
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\hbadness=10000
+% tables coloring
+\usepackage{colortbl}
+\usepackage{cellspace}
+\setlength\cellspacetoplimit{6pt}
+\setlength\cellspacebottomlimit{6pt}
+\usepackage{makecell}	
+% tables fixed colum width
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% sections numbering
+\setcounter{tocdepth}{6}
+\setcounter{secnumdepth}{6}
+\newtheorem{myremark}{Remark}
+\newtheorem{myproperty}{Property}
+\DeclareMathOperator*{\argmin}{arg\;min}
+\DeclareMathOperator*{\argmax}{arg\;max}
+\DeclareMathOperator*{\diag}{diag}
+\DeclareMathOperator*{\tr}{tr}
+% font
+\DeclareFontFamily{T1}{newsgott}{}
+\DeclareFontShape{T1}{newsgott}{m}{n}{ <-> preamble/newsgott/newsgott2}{}
+\DeclareFontShape{T1}{newsgott}{m}{b}{ <-> preamble/newsgott/newsgott3}{}
+\DeclareFontShape{T1}{newsgott}{m}{bx}{ <-> preamble/newsgott/newsgott4}{}
+\pdfmapline{+newsgott2\space <preamble/newsgott/newsgott2.ttf\space <preamble/newsgott/T1-WGL4.enc}
+\pdfmapline{+newsgott3\space <preamble/newsgott/newsgott3.ttf\space <preamble/newsgott/T1-WGL4.enc}
+\pdfmapline{+newsgott4\space <preamble/newsgott/newsgott4.ttf\space <preamble/newsgott/T1-WGL4.enc}
+% language
+\ifthenelse{\isundefined{\doclanguage}}{
+  \def\doclanguage{}
+}{}
+% set font as default
+\newcommand{\usecustomfont}{
+	\renewcommand{\sfdefault}{newsgott}
+	\renewcommand{\familydefault}{\sfdefault}
+}
+\newcommand{\textbff}[1]{
+	{\usefont{T1}{newsgott}{m}{b}#1}
+}
+\renewcommand{\bf}{
+	\usefont{T1}{newsgott}{m}{b}
+}
+% bibliografia
+\ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\renewcommand{\bibname}{Refer\^encias}
+}{
+	\renewcommand{\bibname}{References}
+}
+% structure
+\let\oldclearpage\clearpage
+\newcommand{\preliminariesformat}{
+	\let\clearpage\oldclearpage
+	\newpage
+	\global\bodystyleheaderfalse
+	\global\sectioninheaderfalse
+	\pagestyle{emptystyle}
+	\titleformat{\chapter}{}{}{0pt}{\centering\bf\large{##1}}[]
+	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{##1}}
+	\titlespacing*{\chapter}{0pt}{-10pt}{30pt}
+}
+\newcommand{\chaptersformat}{
+	\let\clearpage\oldclearpage
+	\newpage
+	\global\bodystyleheaderfalse
+	\global\sectioninheadertrue
+	\pagestyle{bodystyle}
+	\ifthenelse{\equal{\doclanguage}{portuguese}}{
+		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{3.5cm}{\MakeUppercase{\Large{Cap\'itulo}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\Huge\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\dimexpr\linewidth-3.5cm-1.6pt-3ex\relax}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
+	}{
+		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{3.5cm}{\MakeUppercase{\Large{Chapter}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\Huge\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\dimexpr\linewidth-3.5cm-1.6pt-3ex\relax}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
+	}
+	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\titlespacing*{\chapter}{0pt}{50pt}{30pt}	
+}
+\newcommand{\compactchaptersformat}{
+	\let\clearpage\relax
+	\FloatBarrier
+	\global\bodystyleheadertrue
+	\global\sectioninheaderfalse
+	\pagestyle{bodystyle}
+	\titleformat{\chapter}[block]{\bf\Large}{\thechapter~~}{0pt}{\bf\Large{\thechaptertitlefont ##1}}	
+	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+}
+\newcommand{\bibliographyformat}{
+	\let\clearpage\oldclearpage
+	\newpage
+	\global\bodystyleheaderfalse
+	\global\sectioninheaderfalse
+	\pagestyle{bibliographystyle}
+	\titleformat{\chapter}{\bf\Large}{}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
+	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\Large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\renewcommand{\bibsection}{\chapter*{\bibname}}
+	\ifthenelse{\equal{\doclanguage}{portuguese}}{
+		\addcontentsline{toc}{chapter}{\expandafter\bf Refer\^encias}
+	}{
+		\addcontentsline{toc}{chapter}{\expandafter\bf References}
+	}
+	\bibliographystyle{unsrtnat}
+	\titlespacing*{\chapter}{0pt}{10pt}{30pt}
+}
+\newcommand{\compactbibliographyformat}{
+	\let\clearpage\relax
+	\FloatBarrier
+	\global\bodystyleheadertrue
+	\global\sectioninheaderfalse
+	\pagestyle{bibliographystyle}
+	\titleformat{\chapter}{\bf\Large}{}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
+	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\Large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\renewcommand{\bibsection}{\chapter*{\bibname}}	
+	\ifthenelse{\equal{\doclanguage}{portuguese}}{
+		\addcontentsline{toc}{chapter}{\expandafter\bf Refer\^encias}
+	}{
+		\addcontentsline{toc}{chapter}{\expandafter\bf References}
+	}
+	\bibliographystyle{unsrtnat}
+	\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+}
+\newcommand{\chapterbibliographyformat}{
+	\pagestyle{bibliographystyle}
+	\renewcommand{\bibsection}{\section*{\bibname}}
+	\addcontentsline{toc}{section}{References}
+}
+\newcommand{\closingformat}{
+	\let\clearpage\oldclearpage
+}
+\newcommand{\convertchaptersintosections}{
+	\let\chaptersformat=\compactchaptersformat
+	\let\bibliographyformat=\compactbibliographyformat
+	% remove label in table of contents
+	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+}
+\def\thechaptertitlefont{}
+\def\thesectiontitlefont{}
+\def\thesubsectiontitlefont{}
+\def\thesubsubsectiontitlefont{}
+\def\theparagraphtitlefont{}
+\newcommand{\chaptertitlefont}[1]{\def\thechaptertitlefont{#1}}
+\newcommand{\sectiontitlefont}[1]{\def\thesectiontitlefont{#1}}
+\newcommand{\subsectiontitlefont}[1]{\def\thesubsectiontitlefont{#1}}
+\newcommand{\subsubsectiontitlefont}[1]{\def\thesubsubsectiontitlefont{#1}}
+\newcommand{\paragraphtitlefont}[1]{\def\theparagraphtitlefont{#1}}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\newenvironment{abstractkeywords}{\noindent\textbff{Keywords:}}{\newpage}
+\newenvironment{resumopalavraschave}{\noindent\textbff{Palavras-chave:}}{\newpage}
+\newenvironment{chapterabstract}{\addcontentsline{toc}{section}{Abstract}\noindent\textbff{Abstract:}}{}
+\newenvironment{chapterkeywords}{\noindent\textbff{Keywords:}}{\newpage}
+\newcommand\blfootnote[1]{%
+	\begingroup
+		\renewcommand\thefootnote{}
+		\footnote{#1}%
+		\addtocounter{footnote}{-1}%
+	\endgroup
+}
+\newcommand{\appendixchapter}{
+	\addcontentsline{toc}{chapter}{Appendices}
+	\chapter*{Appendices}
+	\renewcommand{\thesection}{Appendix \Alph{section}}
+	\setcounter{section}{0}
+}{}
+\newcommand{\appendixsection}{
+	\addcontentsline{toc}{section}{Appendices}
+	\section*{Appendices}
+	\renewcommand{\thesubsection}{Appendix \Alph{subsection}}
+	\setcounter{subsection}{0}
+}{}
+\newcommand{\noappendix}{
+	\renewcommand{\thesection}{\thechapter.\arabic{subsection}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\setcounter{section}{0}
+	\setcounter{subsection}{0}
+}{}
+% make table of contents with links
+%\usepackage{color}
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+%\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=true, % make the links colored
+%    linkcolor=black, % color TOC links in blue
+%    urlcolor=black, % color URLs in red
+%    linktoc=all % 'all' will create links for everything in the TOC
+%}
+% no space reserved to typeset the page number
+\makeatletter
+\renewcommand\@pnumwidth{0.0cm}
+\makeatother
+% customize toc
+\ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf Cap\'itulo \thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+}{
+	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf Chapter \thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+}
+\titlecontents{section}[0.5cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
+\titlecontents{subsection}[1.0cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
+\titlecontents{subsubsection}[1.5cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
+\titlecontents{paragraph}[2.0cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
+\ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\titlecontents{figure}[2.2cm]{\vspace{0cm}\hspace{-2.2cm}}{\parbox[t]{2.2cm}{Figura \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
+	\titlecontents{table}[2.0cm]{\vspace{0cm}\hspace{-2.0cm}}{\parbox[t]{2.0cm}{Tabela \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
+}{
+	\titlecontents{figure}[2.2cm]{\vspace{0cm}\hspace{-2.2cm}}{\parbox[t]{2.2cm}{Figure \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
+	\titlecontents{table}[2.0cm]{\vspace{0cm}\hspace{-2.0cm}}{\parbox[t]{2.0cm}{Table \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
+}
+\ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\renewcommand{\contentsname}{\'Indice}
+	\renewcommand{\listfigurename}{Lista de figuras}
+	\renewcommand{\listtablename}{Lista de tabelas}
+}{
+	\renewcommand{\contentsname}{Table of contents}
+	\renewcommand{\listfigurename}{List of figures}
+	\renewcommand{\listtablename}{List of tables}
+}
+% cutomize minitoc
+\setcounter{minitocdepth}{6}
+\setlength{\mtcindent}{0pt}
+\ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\renewcommand{\mtctitle}{Table of contents}
+	\renewcommand{\mlftitle}{List of figures}
+	\renewcommand{\mlttitle}{List of tables}
+}{
+	\renewcommand{\mtctitle}{\'Indice}
+	\renewcommand{\mlftitle}{Lista de figuras}
+	\renewcommand{\mlttitle}{Lista de tabelas}
+}
+\renewcommand{\mtifont}{\bf\usecustomfont\normalsize}
+\renewcommand{\mtcfont}{\usecustomfont\normalsize}
+\renewcommand{\mtcSfont}{\usecustomfont\normalsize}
+\renewcommand{\mtcSSfont}{\usecustomfont\normalsize}
+\renewcommand{\mtcSSSfont}{\usecustomfont\normalsize}
+\renewcommand{\mtcPfont}{\usecustomfont\normalsize}
+\renewcommand{\mtcSPfont}{\usecustomfont\normalsize}
+\renewcommand{\mlffont}{\usecustomfont\normalsize}
+\renewcommand{\mltfont}{\usecustomfont\normalsize}
+% tabular
+\newcommand{\resizeboxlarger}[1]{
+	\resizebox{%
+		\ifdim\width>\textwidth
+			\textwidth
+		\else
+			\width
+		\fi
+	}{!}{#1}
+}
+\BeforeBeginEnvironment{tabular}{\small}
+\AfterEndEnvironment{tabular}{}
+\setlength{\tabcolsep}{0.15cm}
+\renewcommand{\arraystretch}{1.25}
+% caption font
+\DeclareCaptionFont{customcaptionfont}{\linespread{1.25}\small}
+\captionsetup{font=customcaptionfont}
+\ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\renewcommand{\figurename}{Figura}
+	\renewcommand{\tablename}{Tabela}
+}{
+	\renewcommand{\figurename}{Figure}
+	\renewcommand{\tablename}{Table}
+}
+% spacing
+\onehalfspacing
+% indentation length
+\setlength\parindent{1.0cm}
+% spacing between paragraphs
+\setlength{\parskip}{0.2cm}
+% multiline cell in tables
+\newcommand{\specialcell}[2]{
+	\begin{tabular}[h]{@{}#1@{}}
+		#2
+	\end{tabular}
+}
+% chapter title
+\def\currentchapter{}
+\let\oldchapter\chapter
+\renewcommand{\chapter}[2]{
+	\ifthenelse{\equal{#1}{*}}{
+		\oldchapter*{#2}
+		\def\currentchapter{#2}
+		\thispagestyle{\currentpagestyle}
+	}{
+		\oldchapter{#1}
+		\def\currentchapter{#1}
+		\thispagestyle{\currentpagestyle}
+		% let second argument exists
+		#2
+	}
+}
+% section title
+\def\currentsection{}
+\let\oldsection\section
+\renewcommand{\section}[2]{
+	\ifthenelse{\equal{#1}{*}}{
+		\oldsection*{#2}
+		\def\currentsection{#2}
+		\thispagestyle{\currentpagestyle}
+	}{
+		\oldsection{#1}
+		\def\currentsection{#1}
+		\thispagestyle{\currentpagestyle}
+		% let second argument exists
+		#2
+	}
+}
+% allow pagebreaks in align environments
+\BeforeBeginEnvironment{align}{
+	\allowdisplaybreaks
+	\setlength{\jot}{8pt}
+}
+\BeforeBeginEnvironment{alignat}{
+	\allowdisplaybreaks
+	\setlength{\jot}{8pt}
+}
+% page style
+\def\currentpagestyle{}
+\let\oldpagestyle\pagestyle
+\renewcommand{\pagestyle}[1]{
+	\oldpagestyle{#1}
+	\def\currentpagestyle{#1}
+}
+% chapter or section in header
+\newif\ifsectioninheader
+% enable/disable page header rule 
+\newif\ifbodystyleheader
+% create header and footer style
+\fancypagestyle{bodystyle}{
+	% font size
+	\normalfont
+	% clear header and footer
+	\fancyhead{}
+	\fancyfoot{}
+	% rules
+	\renewcommand{\headrulewidth}{
+		\ifbodystyleheader
+			0.5pt
+		\else
+			0.0pt 
+		\fi
+	}
+	\renewcommand{\footrulewidth}{0.5pt}
+	% header
+	\ifsectioninheader
+		\fancyhead[RO]{
+			\ifbodystyleheader
+				\small\thesection~\currentsection
+			\fi
+		}
+		\fancyhead[LE]{
+			\ifbodystyleheader
+				\small\thesection~\currentsection
+			\fi
+		}
+	\else
+		\fancyhead[RO]{
+			\ifbodystyleheader
+				\small\thechapter~\currentchapter
+			\fi
+		}
+		\fancyhead[LE]{
+			\ifbodystyleheader
+				\small\thechapter~\currentchapter
+			\fi
+		}
+	\fi
+	% footer
+	%\fancyfoot[LO,RE]{\small}
+	\fancyfoot[RO,LE]{\small\thepage}
+}
+% create header and footer style
+\fancypagestyle{bibliographystyle}{
+	% font size
+	\normalfont
+	% clear header and footer
+	\fancyhead{}
+	\fancyfoot{}
+	% rules
+	\renewcommand{\headrulewidth}{0.5pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+	% header
+	\fancyhead[RO]{\small\bibname}
+	\fancyhead[LE]{\small\bibname}
+	% footer
+	%\fancyfoot[LO,RE]{\small}
+	\fancyfoot[RO,LE]{\small\thepage}
+}
+% create header and footer style
+\fancypagestyle{emptystyle}{
+	% font size
+	\normalfont
+	% clear header and footer
+	\fancyhead{}
+	\fancyfoot{}
+	% rules
+	\renewcommand{\headrulewidth}{0.0pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+	% header
+	%\fancyhead[RO]{\small\doctitle}
+	%\fancyhead[LE]{\small\doctitle}
+	% footer
+	%\fancyfoot[LO,RE]{\small}
+	\fancyfoot[RO,LE]{\small\thepage}
+}
+% bibliography for each chapter
+\newcites{chapi}{References}
+\newcites{chapii}{References}
+\newcites{chapiii}{References}
+\newcites{chapiv}{References}
+\newcites{chapvi}{References}
+\newcites{chapvii}{References}
+\newcites{chapviii}{References}
+\newcites{chapix}{References}
+\newcites{chapx}{References}
+% end of file

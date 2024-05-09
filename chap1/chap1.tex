@@ -1,0 +1,59 @@
+%=============================================================
+% Ricardo Costa, December, 2021
+%=============================================================
+% - Plain chapter template
+% - In this chapter format, sections begin on the same page as the title
+% - A table of contents and list of figures and tables can be generated for this chapter individually,
+% and for that uncomment the commands \minitoc, \minilof, and \minilot below
+% - If any of the above commands are used, also uncommented the command \newpage below for a
+% page break (in that case, sections start on the next available page)
+% - Sections in this chapter are also included in different files for the sake of organization (especially
+% useful for large documents) but a single file with all the sections can also be used
+% - All the sections, figures, tables, and any other material used in this chapter are in folder include/
+% but any other structure can be used providing the appropriate paths to the commands
+% - A bibliography can be generated for this chapter individually, and for that uncomment the last
+% commands at the end of this file and provide the path to the bibliography file
+% - The last three commands are suffixed with "chapi", which is an identifier for the bibliography
+% included in the current chapter, in that case chap1
+% - Replace the suffix "chapi" with "chapii", "chapiii", "chapiv", "chapv", etc. according to the current
+% chapter number and for each chapter you want to generate an individual bibliography (for instance,
+% in "chap6.tex" replace the suffix "chapi" with "chapvi" in the last three commands)
+% - If individual bibliographies are used for each chapter, comment the last commands in the main
+% file to not generate a global bibliography (it is recommended to have either a global bibliography
+% or individual bibliographies for each chapter)
+% - Consider using the prefix "chapX:" (replace X with the chapter number) in each label you create
+% for the sections, figures, tables, equations, and bibliography to avoid duplicate references between
+% chapters (for instance, \label{chap1:some_figure}, @article{chap1:some_paper}, etc.)
+%=============================================================
+
+% do not comment or modify
+\chaptersformat
+
+% chapter title
+\chapter{Introduction}
+
+% do not comment or modify
+\afterpage{\global\bodystyleheadertrue}
+
+% leave this uncommented for an individual chapter table of contents
+%\minitoc
+% leave this uncommented for an individual chapter list of figures
+%\minilof
+% leave this uncommented for an individual chapter list of tables
+%\minilot
+% leave this uncommented if any of the above commands are used
+%\newpage
+
+% include section files
+\input{chap1/include/sections/sec1_polymer_processing.tex}
+\input{chap1/include/sections/sec2_computational_modeling.tex}
+\input{chap1/include/sections/sec3_mathematical_modeling.tex}
+\input{chap1/include/sections/sec4_computational_methods.tex}
+
+% leave this uncommented for an individual chapter bibliography
+%\chapterbibliographyformat
+%\nocitechapi{*}
+%\bibliographystylechapi{unsrt}
+%\bibliographychapi{chap1/include/sections/bibliography.bib}
+
+% end of file
