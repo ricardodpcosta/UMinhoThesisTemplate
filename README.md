@@ -53,17 +53,17 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 %\def\doctitle{}
 % document title
 %\def\docauthor{}
-% document language (default is english)
+% document language
 %\def\doclanguage{portuguese}
 % formatting rules
 \input{preamble/preamble}
 % nomenclature list
 %\input{include/preliminaries/nomencl}
-% leave this uncommented for a bibliography with Sortedbib
+% bibliography with Sortedbib
 %\input{bibliography/references2.tex}
-% leave this uncommented to convert chapters into sections
+% convert chapters into sections
 %\convertchaptersintosections
-% customise title fonts (can also be defined for each chapter individually)
+% customise title fonts
 %\chaptertitlefont{}
 %\sectiontitlefont{}
 %\subsectiontitlefont{}
@@ -79,7 +79,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 - Templates for the covers in SVG format for doctoral thesis and master works are provided, which can be edited with the appropriate software (Inkscape, etc.) and then saved in PDF format.
 
-- Make sure the official font (NewsGotT) is installed on your computer before editing the cover templates (the source font files are provided in UMinhoThesisOfficial for installation).
+- Make sure the official font (NewsGotT) is installed on your computer before editing the cover templates (the source font files are provided in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) for installation).
 
 - Choose below the cover and the title page for your work (doctoral thesis or master work) and comment/uncomment the predefined selection as necessary.
 
@@ -87,25 +87,25 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 - Save in the same folder the edited SVG files in PDF format (only change the extension).
 
-- Additional covers for others UOEIs are provided in UMinhoThesisOfficial in AI format to be edited and converted to PDF format and saved in folder covers/
+- Additional covers for others UOEIs are provided in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) in AI format to be edited and converted to PDF format and saved in folder covers/
 
 ```latex
 % select font
 \usecustomfont
 % front page
-% leave this uncommented for a doctoral thesis
+% doctoral thesis
 \includepdf[pages=-,fitpaper,landscape=true]{covers/doctoral_front_cover.pdf}
 \includepdf[pages=-,fitpaper,landscape=true]{covers/doctoral_back_cover.pdf}
-% leave this uncommented for a master work
+% master work
 %\includepdf[pages=-,fitpaper,landscape=true]{covers/master_front_cover.pdf}
 %\includepdf[pages=-,fitpaper,landscape=true]{covers/master_back_cover.pdf}
 % page numbering
 \newpage
 \pagenumbering{roman}
 \setcounter{page}{1}
-% leave this uncommented for a doctoral thesis
+% doctoral thesis
 \includepdf[pages=-,offset=0 -0]{covers/doctoral_title_page.pdf}
-% leave this uncommented for a master work
+% master work
 %\includepdf[pages=-,offset=0 -0]{covers/master_title_page.pdf}
 ```
 
@@ -133,16 +133,16 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 \input{preliminaries/resumo}
 \input{preliminaries/abstract}
 \input{preliminaries/publications_and_awards}
-% leave this uncommented for a table of contents
+% table of contents
 \dominitoc
 \tableofcontents
-% leave this uncommented for a list of figures
+% list of figures
 \dominilof
 \listoffigures
-% leave this uncommented for a list of tables
+% list of tables
 \dominilot
 \listoftables
-% leave this uncommented for a nomenclature
+% nomenclature
 %\printnomenclature
 ```
 
@@ -198,7 +198,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 - Compiling with `pdflatex` twice is required for cross-references of bibliographic entries to be correctly generated and referenced in the generated PDF document.
 
 ```latex
-% leave this uncommented for a bibliography with Bibitems
+% bibliography with Bibitems
 \bibliographyformat
 \begin{thebibliography}{1}
 \input{bibliography/references1.tex}
@@ -218,7 +218,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 - Several bibliography files can be provided to the command `\bibliography{}` separated with commas, and the file extension .bib is required for the bibliography databases.
 
 ```latex
-% leave this uncommented for a bibliography with BibTeX
+% bibliography with BibTeX
 \bibliographyformat
 \bibliography{bibliography/references.bib}
 
@@ -237,7 +237,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 - The bibliography file needs to be provided with the command `\input{}` placed before the command `\begin{document}` and after the preamble.
 
 ```latex
-% leave this uncommented for a bibliography with SortedBib
+% bibliography with SortedBib
 \bibliographyformat
 \begin{thebibliography}{1}
 \printbib
