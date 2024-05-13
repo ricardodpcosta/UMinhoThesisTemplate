@@ -255,7 +255,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 - If using individual bibliographies for the chapters, leave commented all the commands provided for the bibliography in `main.tex` and uncomment the corresponding commands provided in each chapter.
 
 ```latex
-% leave this uncommented for an individual chapter bibliography
+% individual chapter bibliography
 \chapterbibliographyformat
 \nocitechapi{*}
 \bibliographystylechapi{unsrt}
