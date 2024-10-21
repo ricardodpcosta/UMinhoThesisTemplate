@@ -25,6 +25,9 @@ for file in ${bibfiles[@]};do
       fi;
 done;
 
+# compilation of nomenclature
+makeindex main.nlo -s nomencl.ist -o main.nls;
+
 # compilation for cross references
 pdflatex main;
 pdflatex main;

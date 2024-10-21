@@ -2,6 +2,7 @@
 % Ricardo Costa, April, 2024
 %=============================================================
 % packages
+\usepackage{morewrites} % extends the number of registers to prevent an error
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage[fleqn]{amsmath}
@@ -18,6 +19,7 @@
 \usepackage{array}
 \usepackage{float}
 \usepackage{xcolor}
+% use titles explicitly in titleformat
 \usepackage[explicit]{titlesec}
 \usepackage{titletoc}
 \usepackage{titling}
@@ -33,6 +35,9 @@
 \usepackage{mathptmx}
 \usepackage[T1]{fontenc}
 \usepackage{multirow}
+\usepackage{multicol}
+\usepackage{nomencl}
+%\usepackage{framed}
 \usepackage{lscape}
 \usepackage{afterpage}
 \usepackage[tracking=true]{microtype}
@@ -118,7 +123,7 @@
 \renewcommand{\bf}{
 	\usefont{T1}{newsgott}{m}{b}
 }
-% bibliografia
+% bibliography
 \ifthenelse{\equal{\doclanguage}{portuguese}}{
 	\renewcommand{\bibname}{Refer\^encias}
 }{
@@ -132,7 +137,7 @@
 	\global\bodystyleheaderfalse
 	\global\sectioninheaderfalse
 	\pagestyle{emptystyle}
-	\titleformat{\chapter}{}{}{0pt}{\centering\bf\large{##1}}[]
+	\titleformat{\chapter}{}{}{0pt}{\centering\bf\Large{##1}}
 	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{##1}}
 	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{##1}}
 	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{##1}}
@@ -146,9 +151,9 @@
 	\global\sectioninheadertrue
 	\pagestyle{bodystyle}
 	\ifthenelse{\equal{\doclanguage}{portuguese}}{
-		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{3.5cm}{\MakeUppercase{\Large{Cap\'itulo}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\Huge\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\dimexpr\linewidth-3.5cm-1.6pt-3ex\relax}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
+		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{\ifnum\value{chapter}>9 5.2cm\else 3.5cm\fi}{\MakeUppercase{\Large{Cap\'itulo}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\ifnum\value{chapter}>9 \dimexpr\linewidth-5.2cm-1.6pt-7ex\relax\else\dimexpr\linewidth-3.5cm-1.6pt-7ex\relax\fi}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
 	}{
-		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{3.5cm}{\MakeUppercase{\Large{Chapter}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\Huge\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\dimexpr\linewidth-3.5cm-1.6pt-3ex\relax}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
+		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{\ifnum\value{chapter}>9 5.2cm\else 3.5cm\fi}{\MakeUppercase{\Large{Chapter}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\ifnum\value{chapter}>9 \dimexpr\linewidth-5.2cm-1.6pt-7ex\relax\else\dimexpr\linewidth-3.5cm-1.6pt-7ex\relax\fi}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
 	}
 	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
 	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
@@ -491,6 +496,43 @@
 	%\fancyfoot[LO,RE]{\small}
 	\fancyfoot[RO,LE]{\small\thepage}
 }
+% nomenclature
+\ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\renewcommand{\nomname}{Lista de s\'imbolos}
+}{
+	\renewcommand{\nomname}{List of symbols}
+}
+\newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+%\newcommand{\printncl}{\begin{framed}\vspace{-0.5cm}\printnomenclature[0.8cm]\end{framed}}
+%\setlength{\nomitemsep}{-2mm}
+\renewcommand\nompreamble{\setlength\columnsep{1.0cm}\begin{multicols}{2}}
+\renewcommand\nompostamble{\end{multicols}}
+% symbols categories
+\renewcommand\nomgroup[1]{
+  \ifthenelse{\equal{#1}{A}}{
+    \item[\hspace{-4pt}\bf{Acronyms}]
+  }{
+  \ifthenelse{\equal{#1}{R}}{
+    \item[\hspace{-4pt}\bf{Roman symbols}]
+  }{
+  \ifthenelse{\equal{#1}{G}}{
+    \item[\hspace{-4pt}\bf{Greek symbols}]
+  }{
+  \ifthenelse{\equal{#1}{S}}{
+    \item[\hspace{-4pt}\bf{Superscripts}]
+  }{
+  \ifthenelse{\equal{#1}{U}}{
+    \item[\hspace{-4pt}\bf{Subscripts}]
+  }{
+  \ifthenelse{\equal{#1}{C}}{
+    \item[\hspace{-4pt}\bf{Constants}]
+  }{
+  \ifthenelse{\equal{#1}{O}}{
+    \item[\hspace{-4pt}\bf{Operators}]
+  }{
+  \ifthenelse{\equal{#1}{X}}{
+    \item[\hspace{-4pt}\bf{Other symbols}]}
+  {{}}}}}}}}}}
 % bibliography for each chapter
 \newcites{chapi}{References}
 \newcites{chapii}{References}
