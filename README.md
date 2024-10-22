@@ -58,7 +58,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 % formatting rules
 \input{preamble/preamble}
 % nomenclature list
-%\input{include/preliminaries/nomencl}
+%\input{preliminaries/nomencl}
 % bibliography with Sortedbib
 %\input{bibliography/references2.tex}
 % convert chapters into sections
