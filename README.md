@@ -87,7 +87,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 - Save in the same folder the edited SVG files in PDF format (only change the extension).
 
-- Additional covers for others UOEIs are provided in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) in AI format to be edited and converted to PDF format and saved in folder covers/
+- Additional covers for others UOEIs are provided in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) in AI format to be edited and converted to PDF format and saved in folder `covers/`.
 
 ```latex
 % select font
