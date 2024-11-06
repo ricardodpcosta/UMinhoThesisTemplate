@@ -34,7 +34,9 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 - In `bibliography/` are stored the bibliographic references of your document. There are several approaches for bibliography management with LaTeX and only one of these LaTeX source files should be edited according to your personal choice.
 
-- In `chap1/` and `chap2/` are stored the contents of each chapter of your document. These LaTeX source files should be edited with the contents of your work, whereas `chap1/` and `chap2/` are provided as examples and correspond to two different chapter formats.
+- In `chap1/` and `chap2/` are stored the contents of each chapter of your document. These LaTeX source files should be edited with the contents of your work, whereas `chap1.tex` and `chap2.tex` are provided as examples and correspond to two different chapter formats.
+
+- In `appendices/` are stored the contents of each appendix of your document. These LaTeX source files should be edited with the contents of your work, whereas `appendixa.tex` and `appendixb.tex` are provided as examples.
 
 ---
 
@@ -90,19 +92,14 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 - Additional covers for others UOEIs are provided in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) in AI format to be edited and converted to PDF format and saved in folder `covers/`.
 
 ```latex
-% select font
-\usecustomfont
-% front page
+% front and back covers
 % doctoral thesis
 \includepdf[pages=-,fitpaper,landscape=true]{covers/doctoral_front_cover.pdf}
 \includepdf[pages=-,fitpaper,landscape=true]{covers/doctoral_back_cover.pdf}
 % master work
 %\includepdf[pages=-,fitpaper,landscape=true]{covers/master_front_cover.pdf}
 %\includepdf[pages=-,fitpaper,landscape=true]{covers/master_back_cover.pdf}
-% page numbering
-\newpage
-\pagenumbering{roman}
-\setcounter{page}{1}
+% title page
 % doctoral thesis
 \includepdf[pages=-,offset=0 -0]{covers/doctoral_title_page.pdf}
 % master work
@@ -125,7 +122,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 
 ```latex
-% preliminaries format
+% preliminaries
 \preliminariesformat
 \input{preliminaries/redistribution}
 \input{preliminaries/acknowledgements}
@@ -143,7 +140,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 \dominilot
 \listoftables
 % nomenclature
-%\printnomenclature
+\printnomenclature
 ```
 
 ---
@@ -163,22 +160,12 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 - Open each of the chapters below and follow the instructions provided.
 
 ```latex
-% page numbering
-\newpage
-\pagenumbering{arabic}
-\setcounter{page}{1}
-% leave this uncommented for chapter 1
+% Chapter 1
+\chaptersformat
 \input{chap1/chap1.tex}
-% leave this uncommented for chapter 2
+% Chapter 2
+\chaptersformat
 \input{chap2/chap2.tex}
-% leave this uncommented for chapter 3
-%\input{chap3/chap3.tex}
-% leave this uncommented for chapter 4
-%\input{chap4/chap4.tex}
-% leave this uncommented for chapter 5
-%\input{chap5/chap5.tex}
-% leave this uncommented for chapter 6
-%\input{chap6/chap6.tex}
 ```
 
 ---
@@ -237,7 +224,7 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 - The bibliography file needs to be provided with the command `\input{}` placed before the command `\begin{document}` and after the preamble.
 
 ```latex
-% bibliography with SortedBib
+% bibliography with Sortedbib
 \bibliographyformat
 \begin{thebibliography}{1}
 \printbib
@@ -266,11 +253,18 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 ## Appendices
 
-- Appendices can be introduced as regular chapters replacing the command `\chapter{}` with `\appendixchapter`, after which sections and subsections can be introduced normally.
+- Appendices should appear after the bibliography and should be named "Appendix A", "Appendix B", and so on in the order that the information is mentioned in the document.
 
-- Appendices can also be introduced as sections inside chapters replacing the command `\section{}` with `\appendixsection`, after which subsections can be introduced normally.
+- Appendices can be introduced as regular chapters with sections, subsections, subsubsections and paragraphs and can contain figures, tables, and equations.
 
-- In both cases, the command `\noappendix` should be placed at the end of the chapter or section corresponding to the appendices.
+```latex
+% Appendix A
+\appendixformat
+\input{appendices/appendixa.tex}
+% Appendix B
+\appendixformat
+\input{appendices/appendixb.tex}
+```
 
 ---
 
