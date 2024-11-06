@@ -161,10 +161,10 @@ Below you can find a tutorial with a sequence of steps to guide you in adapting 
 
 ```latex
 % Chapter 1
-\chaptersformat
+\chapterformat
 \input{chap1/chap1.tex}
 % Chapter 2
-\chaptersformat
+\chapterformat
 \input{chap2/chap2.tex}
 ```
 

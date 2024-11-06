@@ -171,7 +171,7 @@
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
 	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
-\newcommand{\chaptersformat}{
+\newcommand{\chapterformat}{
 	\let\clearpage\oldclearpage
 	\newpage
 	\global\bodystyleheaderfalse
@@ -192,7 +192,7 @@
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
 	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
-\newcommand{\compactchaptersformat}{
+\newcommand{\compactchapterformat}{
 	\let\clearpage\relax
 	\FloatBarrier
 	\global\bodystyleheadertrue
@@ -352,7 +352,7 @@
 	\let\clearpage\oldclearpage
 }
 \newcommand{\convertchaptersintosections}{
-	\let\chaptersformat=\compactchaptersformat
+	\let\chapterformat=\compactchapterformat
 	\let\bibliographyformat=\compactbibliographyformat
 	\let\appendicesformat=\compactappendicesformat
 }
