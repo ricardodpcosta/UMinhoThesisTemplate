@@ -1,5 +1,5 @@
 %=============================================================
-% Ricardo Costa, October, 2024
+% Ricardo Costa, November, 2024
 %=============================================================
 % READ ME
 %------------------------------------------------------------------------------------
@@ -20,7 +20,8 @@
 % generated and referenced in the generated PDF document
 % – Check the script "./makemain.sh" provided in this template folder for further information on the
 % compilation steps needed
-% - Recommended LaTeX editor is Texmaker (https://www.xm1math.net/texmaker/)
+% - Recommended LaTeX editor is Texmaker (https://www.xm1math.net/texmaker/) or Overleaf
+% (https://overlead.com/)
 %=============================================================
 \documentclass[a4paper,12pt,twoside]{report}
 % document title
@@ -72,10 +73,6 @@
 % leave this uncommented for a master work
 %\includepdf[pages=-,fitpaper,landscape=true]{covers/master_front_cover.pdf}
 %\includepdf[pages=-,fitpaper,landscape=true]{covers/master_back_cover.pdf}
-% page numbering
-\newpage
-\pagenumbering{roman}
-\setcounter{page}{1}
 % leave this uncommented for a doctoral thesis
 \includepdf[pages=-,offset=0 -0]{covers/doctoral_title_page.pdf}
 % leave this uncommented for a master work
@@ -96,25 +93,34 @@
 % list of tables, comment both the commands \dominilot and \listoftables, otherwise an empty list
 % will be generated)
 %------------------------------------------------------------------------------------
-% preliminaries format
+% do not comment of modify
 \preliminariesformat
+%------------------------------------------------------------------------------------
+% leave this uncommented for the preliminaries
 \input{preliminaries/redistribution}
 \input{preliminaries/acknowledgements}
 \input{preliminaries/statement_of_integrity}
 \input{preliminaries/resumo}
 \input{preliminaries/abstract}
 \input{preliminaries/publications_and_awards}
-% leave this uncommented for a table of contents
+%------------------------------------------------------------------------------------
+% leave this uncommented for the table of contents
 \dominitoc
 \tableofcontents
-% leave this uncommented for a list of figures
+%------------------------------------------------------------------------------------
+% leave this uncommented for the list of figures
 \dominilof
 \listoffigures
-% leave this uncommented for a list of tables
+%------------------------------------------------------------------------------------
+% leave this uncommented for the list of tables
 \dominilot
 \listoftables
-% leave this uncommented for a nomenclature
+%------------------------------------------------------------------------------------
+% leave this uncommented for the nomenclature
 \printnomenclature
+%------------------------------------------------------------------------------------
+% do not comment of modify
+\closepreliminaries
 %=============================================================
 % STEP 3 - CHAPTERS AND SECTIONS
 %------------------------------------------------------------------------------------
@@ -132,22 +138,16 @@
 %  to create new chapters for your work
 % 3.6 - Open each of the chapters below and follow the instructions provided
 %------------------------------------------------------------------------------------
-% page numbering
-\newpage
-\pagenumbering{arabic}
-\setcounter{page}{1}
-% leave this uncommented for chapter 1
+% leave this uncommented for the Chapter 1
+\chaptersformat
 \input{chap1/chap1.tex}
-% leave this uncommented for chapter 2
+%------------------------------------------------------------------------------------
+% leave this uncommented for the Chapter 2
+\chaptersformat
 \input{chap2/chap2.tex}
-% leave this uncommented for chapter 3
-%\input{chap3/chap3.tex}
-% leave this uncommented for chapter 4
-%\input{chap4/chap4.tex}
-% leave this uncommented for chapter 5
-%\input{chap5/chap5.tex}
-% leave this uncommented for chapter 6
-%\input{chap6/chap6.tex}
+%------------------------------------------------------------------------------------
+% do not comment of modify
+\closechapters
 %=============================================================
 % STEP 4 - BIBLIOGRAPHY
 %------------------------------------------------------------------------------------
@@ -201,31 +201,45 @@
 % 4.19 - If using individual bibliographies for the chapters, leave commented all the commands
 % provided below and uncomment the corresponding commands provided in each chapter
 %------------------------------------------------------------------------------------
-% leave this uncommented for a bibliography with Bibitems
+% leave this uncommented for the bibliography with Bibitems
 \bibliographyformat
 \begin{thebibliography}{1}
 \input{bibliography/references1.tex}
 \end{thebibliography}
-% leave this uncommented for a bibliography with BibTeX
+%------------------------------------------------------------------------------------
+% leave this uncommented for the bibliography with BibTeX
 %\bibliographyformat
 %\bibliography{bibliography/references.bib}
-% leave this uncommented for a bibliography with Sortedbib
+%------------------------------------------------------------------------------------
+% leave this uncommented for the bibliography with Sortedbib
 %\bibliographyformat
 %\begin{thebibliography}{1}
 %\printbib
 %\end{thebibliography}
+%------------------------------------------------------------------------------------
+% do not comment of modify
+\closebibliography
 %=============================================================
 % STEP 5 - APPENDICES
 %------------------------------------------------------------------------------------
-% 5.1 - Appendices can be introduced as regular chapters replacing the command \chapter{} with 
-% \appendixchapter, after which sections and subsections can be introduced normally
-% 5.2 - Appendices can also be introduced as sections inside chapters replacing the command
-% \section{} with \appendixsection, after which subsections can be introduced normally
-% 5.3 - In both cases, the command \noappendix should be placed at the end of the chapter or
-% section corresponding to the appendices
+% 5.1 – Appendices should appear after the bibliography and should be named "Appendix A",
+% "Appendix B", and so on in the order that the information is mentioned in the document
+% 5.2 - Appendices can be introduced as regular chapters with sections, subsections, subsubsections
+% and paragraphs and can contain figures, tables, and equations
+%------------------------------------------------------------------------------------
+% leave this uncommented for the Appendix A
+\appendixformat
+\input{appendices/appendixa.tex}
+%------------------------------------------------------------------------------------
+% leave this uncommented for the Appendix B
+\appendixformat
+\input{appendices/appendixb.tex}
+%------------------------------------------------------------------------------------
+% do not comment or modify
+\closeappendices
 %=============================================================
-% leave this uncommented always
-\closingformat
+% do not comment or modify
+\closedocument
 %=============================================================
 \end{document}
 %=============================================================

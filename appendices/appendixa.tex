@@ -1,0 +1,134 @@
+%=============================================================
+% Ricardo Costa, November, 2024
+%=============================================================
+
+\chapter{Least-squares method}
+\label{chap:appendix_least_squares_method}
+
+The polynomial reconstruction method requires seeking, through a minimization procedure, the polynomial coefficients vector that provides the best approximation of the polynomial function to the cell mean-values chosen according to the associated stencil.
+For that purpose, the weighted cost functional is defined and given in matrix form as
+\begin{equation}
+\label{eq:appendix_least_squares_method_cost_functional}
+F\left(\bs{\eta}\right)=\bigl\Vert\bm{W}\bm{A}\bs{\eta}-\bm{W}\bm{b}\bigr\Vert_{2}^{2},
+\end{equation}
+where vector $\bs{\eta}\in\mathbb{R}^{n}$ gathers the polynomial coefficients, matrix $\bm{A}\in\mathbb{R}^{s\times n}$ gathers the coefficients resulting from the evaluation of the monomials mean-values in the cells, diagonal matrix $\bm{W}\in\mathbb{R}^{s\times s}$ gathers the weights associated to the cells, and vector $\bm{b}\in\mathbb{R}^{s}$ gathers the cell mean-values.
+
+Moreover, linear constraint functional $G\left(\bs{\eta}\right)$ is required in the case of a constrained polynomial reconstruction to satisfy the cell mean-value conservation or to fulfil the Robin boundary condition.
+In both cases, constraint functional $G\left(\bs{\eta}\right)$ is given in matrix form as
+\begin{equation}
+\label{eq:appendix_least_squares_method_constraint_functional}
+G\left(\bs{\eta}\right)=\bm{c}\cdot\bs{\eta}-g,
+\end{equation}
+where vector $\bm{c}\in\mathbb{R}^{n}$ gathers the coefficients resulting from the monomials mean-values in the reference cell or from the monomials value at the collocation point and $g$ stands for the cell mean-value to conserve, in the former case, and the point-value to fulfil, in the latter case.
+
+\section{Normal equations method}
+\label{sec:appendix_least_squares_method_normal_equations_method}
+
+For unconstrained polynomial reconstructions, the minimization procedure consists in seeking unique vector $\widetilde{\bs{\eta}}\in\mathbb{R}^{n}$ that minimizes weighted cost functional $F\left(\bs{\eta}\right)$, that is, $\widetilde{\bs{\eta}}=\argmin_{\bs{\eta}}F\left(\bs{\eta}\right)$.
+Following the normal equations method, vector $\widetilde{\bs{\eta}}$ is computed as
+\begin{equation}
+\label{eq:appendix_least_squares_method_normal_equations_method_equation1}
+\widetilde{\bs{\eta}}
+=\left(\bm{W}\bm{A}\right)^{\dagger}\bm{W}\bm{b}
+=\left(\left(\bm{W}\bm{A}\right)^{\textrm{T}}\bm{W}\bm{A}\right)^{-1}\left(\bm{W}\bm{A}\right)^{\textrm{T}}\bm{W}\bm{b},
+=\left(\bm{A}^{\textrm{T}}\bm{W}^{2}\bm{A}\right)^{-1}\bm{A}^{\textrm{T}}\bm{W}^{2}\bm{b}
+\end{equation}
+where $\left(\bm{W}\bm{A}\right)^{\dagger}$ corresponds to the Moore-Penrose pseudoinverse of matrix $\bm{W}\bm{A}$ (notice that $\bm{W}^{\textrm{T}}=\bm{W}$ since it is a diagonal matrix).
+Setting $\bm{M}=\left(\bm{W}\bm{A}\right)^{\dagger}\bm{W}\in\mathbb{R}^{s\times n}$, polynomial coefficients vector is given as $\widetilde{\bs{\eta}}=\bm{M}\bm{b}$.
+The existence of a unique solution for the normal equations method is guaranteed if matrix $\bm{A}$ has full rank.
+Since $\bm{A}$ is a Vandermonde matrix, having at least $n$ distinct cells is a sufficient condition to guarantee the full rank, whereas unstructured meshes are also convenient to avoid ill-conditioned matrices.
+A preconditioning technique may also be applied to the normal equations method to reduce the condition number and provide more stable results.
+
+Applying the normal equations method in the case of unconstrained polynomial reconstruction $\widetilde{\varphi}_{ij}\left(\bm{x}\right)$ for each inner face $f_{ij}$ in computational subdomain $\Omega^{S}_{\Delta}$, associated polynomial coefficients vector $\widetilde{\bs{\eta}}_{ij}$ can be computed as $\widetilde{\bs{\eta}}_{ij}=\widetilde{\bm{M}}_{ij}\bm{b}_{ij}$ where vector $\bm{b}_{ij}$ gathers the cell mean-values and matrix $\widetilde{\bm{M}}_{ij}$ gathers the associated coefficients obtained from the corresponding terms in Equation~\cref{eq:appendix_least_squares_method_normal_equations_method_equation1}.
+
+\section{Lagrange multipliers method}
+\label{sec:appendix_least_squares_method_lagrande_multipliers_method}
+
+For constrained polynomial reconstructions, the minimization procedure consists in seeking unique vector $\widehat{\bs{\eta}}\in\mathbb{R}^{n}$ that minimizes weighted cost functional $F\left(\bs{\eta}\right)$ and exactly fulfils equation $G\left(\bs{\eta}\right)=0$, that is, $\widehat{\bs{\eta}}=\argmin_{\bs{\eta}}F\left(\bs{\eta}\right)$ subject to $G\left(\bs{\eta}\right)=0$.
+
+Following the Lagrange multipliers method, consider functional $L\left(\bs{\eta},\lambda\right)$ given as
+\begin{equation}
+\label{eq:appendix_least_squares_method_lagrange_multipliers_method_equation1}
+L\left(\bs{\eta},\lambda\right)=F\left(\bs{\eta}\right)+\lambda G\left(\bs{\eta}\right),
+\end{equation}
+where $\lambda\in\mathbb{R}$ is a Lagrange multiplier (notice that the number of Lagrange multipliers is the same as the number of linear constraints).
+Then, polynomial coefficients vector $\widehat{\bs{\eta}}$ is the solution of system of linear equations $\nabla_{\bs{\eta},\lambda} L\left(\bs{\eta},\lambda\right)=\bm{0}$ where differential operator $\nabla_{\bs{\eta},\lambda}$ takes the derivatives with respect to each polynomial coefficient and with respect to the Lagrange multiplier.
+
+On one side, $\nabla_{\bs{\eta}} L\left(\bs{\eta},\lambda\right)=\nabla_{\bs{\eta}} F\left(\bs{\eta}\right)+\lambda\nabla_{\bs{\eta}}G\left(\bs{\eta}\right)$ and it can be deduced, after some algebra, that the gradients of cost functional $F\left(\bs{\eta}\right)$ and constraint functional $G\left(\bs{\eta}\right)$ taking the derivatives with respect to each polynomial coefficient are given in matrix form as
+\begin{align}
+&\nabla_{\bs{\eta}} F\left(\bs{\eta}\right)=2\bm{A}^\text{T}\bm{W}^{2}\bm{A}\bs{\eta}-2\bm{A}^\text{T}\bm{W}^{2}\bm{b},
+\label{eq:appendix_least_squares_method_lagrange_multipliers_method_equation2_1}\\
+&\nabla_{\bs{\eta}}G(\bs{\eta})=\bm{c},
+\label{eq:appendix_least_squares_method_lagrange_multipliers_method_equation2_2}
+\end{align}
+and, therefore, $\nabla_{\bs{\eta}} L\left(\bs{\eta},\lambda\right)$ is rewritten in matrix form as
+\begin{equation}
+\label{eq:appendix_least_squares_method_lagrange_multipliers_method_equation3}
+\nabla_{\bs{\eta}} L\left(\bs{\eta},\lambda\right)=2\bm{A}^\text{T}\bm{W}^{2}\bm{A}\bs{\eta}-2\bm{A}^\text{T}\bm{W}^{2}\bm{b}+\lambda\bm{c}.
+\end{equation}
+On the other side, notice that $\partial L\left(\bs{\eta},\lambda\right)/\partial\lambda=G\left(\bs{\eta}\right)$ and, therefore, is given in matrix form as in Equation~\cref{eq:appendix_least_squares_method_constraint_functional}.
+Therefore, system of linear equations $\nabla_{\bs{\eta},\lambda} L\left(\bs{\eta},\lambda\right)=\bm{0}$ is rewritten gathering gradient $\nabla_{\bs{\eta}} L\left(\bs{\eta},\lambda\right)$ and constraint functional $G\left(\bs{\eta}\right)$ equal to the null vector, given in matrix form as
+\begin{equation}
+\label{eq:appendix_least_squares_method_lagrange_multipliers_method_equation4}
+\setlength\arraycolsep{0.1cm}
+\renewcommand{\arraystretch}{1.3}
+\begin{bmatrix}
+%\\[-0.5cm]
+2\bm{A}^{\textrm{T}}\bm{W}^{2}\bm{A} & \bm{c}\\
+\bm{c}^{\textrm{T}} & 0
+%\\[0.1cm]
+\end{bmatrix}
+\begin{bmatrix}
+%\\[-0.5cm]
+\bs{\eta}\\
+\lambda
+%\\[0.1cm]
+\end{bmatrix}
+=
+\begin{bmatrix}
+%\\[-0.5cm]
+2\bm{A}^{\textrm{T}}\bm{W}^{2}\bm{b}\\
+g
+%\\[0.1cm]
+\end{bmatrix},
+\end{equation}
+which implies that polynomial coefficients vector $\widehat{\bs{\eta}}$ and associated Lagrange multiplier $\widehat{\lambda}$ are given as
+\begin{equation}
+\label{eq:appendix_least_squares_method_lagrange_multipliers_method_equation5}
+\setlength\arraycolsep{0.1cm}
+\renewcommand{\arraystretch}{1.3}
+\begin{bmatrix}
+%\\[-0.5cm]
+\widehat{\bs{\eta}}\\
+\widehat{\lambda}
+%\\[0.1cm]
+\end{bmatrix}
+=
+\begin{bmatrix}
+%\\[-0.5cm]
+2\bm{A}^{\textrm{T}}\bm{W}^{2}\bm{A} & \bm{c}\\
+\bm{c}^{\textrm{T}} & 0
+%\\[0.1cm]
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+%\\[-0.5cm]
+2\bm{A}^{\textrm{T}}\bm{W}^{2}\bm{b}\\
+g
+%\\[0.1cm]
+\end{bmatrix}.
+\end{equation}
+As for the normal equations method, the existence of a unique solution for the normal equations method is guaranteed if matrix $\bm{A}$ has full rank.
+To solve system of linear equations~\cref{eq:appendix_least_squares_method_lagrange_multipliers_method_equation4}, an LDLT factorization (a closely related variant of the conventional Cholesky factorization, also called LLT factorization) is used since the associated coefficient matrix is symmetric by construction.
+The Cholesky factorization runs roughly two times faster than the LU factorization if optimally implemented and requires half of the memory with sparse matrix storage.
+In comparison with the conventional Cholesky factorization, the variant LDLT factorization decomposes the coefficients matrix in a diagonal matrix $\bm{D}$ in addition to the lower triangular matrix $\bm{L}$ and, therefore, requires the same memory as the former but avoids extracting square roots, which is computationally convenient.
+Notice that, in the latter, matrix $\bm{L}$ is a unitriangular matrix (the entries in the diagonal are ones) and, therefore, matrices $\bm{D}$ and $\bm{L}$ can be stored in a single lower triangular matrix.
+Moreover, for indefinite matrices with no conventional Cholesky factorization, the variant LDLT factorization can be computed having negative entries in the diagonal matrix.
+Another technique to obtain more accurate and stable results is to apply a preconditioning matrix to the Lagrange multipliers method to reduce the condition number of its associated coefficient matrix $\bm{A}$.
+
+Applying the Lagrange multipliers method in the case of constrained polynomial reconstruction $\widehat{\varphi}_{i}\left(\bm{x}\right)$ for each cell $c_{i}$ in computational subdomain $\Omega^{S}_{\Delta}$, associated polynomial coefficients vector $\widehat{\bs{\eta}}_{i}$ can be computed given as $\widehat{\bs{\eta}}_{i}=\widehat{\bm{M}}_{i}\bm{b}_{i}$ where vector $\bm{b}_{i}$ gathers the cell mean-values and matrix $\widehat{\bm{M}}_{i}$ gathers the associated coefficients obtained from the corresponding terms in Equation~\cref{eq:appendix_least_squares_method_lagrange_multipliers_method_equation5}.
+Notice that, in that case, $g=\phi_{i}$ is a cell mean-value and, therefore, is also gathered in vector $\bm{b}_{i}$.
+
+Applying the Lagrange multipliers method in the case of constrained polynomial reconstruction $\widehat{\varphi}_{iF}\left(\bm{x}\right)$ for each boundary face $f_{iF}$ on computational boundary subset $\Gamma^{F,S}_{\Delta}$, associated polynomial coefficients vector $\widehat{\bs{\eta}}_{iF}$ can be computed given as $\widehat{\bs{\eta}}_{iF}=\widehat{\bm{M}}_{iF}\bm{b}_{iF}+g_{iF}\widehat{\bm{n}}_{iF}$ where vector $\bm{b}_{iF}$ gathers the cell mean-values and matrix $\widehat{\bm{M}}_{iF}$ and vector $\widehat{\bm{n}}_{iF}$ gather the coefficients associated to the cell mean-values and to the point-value, respectively, obtained from the corresponding terms in Equation~\cref{eq:appendix_least_squares_method_lagrange_multipliers_method_equation5}.
+Notice that, in that case, $g=g_{iF}$ is a point-value and, therefore, is not gathered in vector $\bm{b}_{iF}$.
+
+% end of file

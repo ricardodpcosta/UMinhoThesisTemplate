@@ -1,8 +1,9 @@
 %=============================================================
-% Ricardo Costa, October, 2024
+% Ricardo Costa, November, 2024
 %=============================================================
 % packages
-\usepackage{morewrites} % extends the number of registers to prevent an error
+% extends the number of registers to prevent an error
+\usepackage{morewrites}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage[fleqn]{amsmath}
@@ -110,7 +111,7 @@
 \pdfmapline{+newsgott4\space <preamble/newsgott/newsgott4.ttf\space <preamble/newsgott/T1-WGL4.enc}
 % language
 \ifthenelse{\isundefined{\doclanguage}}{
-  \def\doclanguage{}
+	\def\doclanguage{}
 }{}
 % set font as default
 \newcommand{\usecustomfont}{
@@ -125,9 +126,31 @@
 }
 % bibliography
 \ifthenelse{\equal{\doclanguage}{portuguese}}{
+	\renewcommand{\contentsname}{\'Indice}
+	\renewcommand{\listfigurename}{Lista de figuras}
+	\renewcommand{\listtablename}{Lista de tabelas}
+	\renewcommand{\mtctitle}{\'Indice}
+	\renewcommand{\mlftitle}{Lista de figuras}
+	\renewcommand{\mlttitle}{Lista de tabelas}
+	\renewcommand{\nomname}{Lista de s\'imbolos}
 	\renewcommand{\bibname}{Refer\^encias}
+	\renewcommand{\appendixname}{Ap\^endice}
+	\renewcommand{\chaptername}{Cap\'itulo}
+	\renewcommand{\figurename}{Figura}
+	\renewcommand{\tablename}{Tabela}
 }{
+	\renewcommand{\contentsname}{Table of contents}
+	\renewcommand{\listfigurename}{List of figures}
+	\renewcommand{\listtablename}{List of tables}
+	\renewcommand{\mtctitle}{\'Indice}
+	\renewcommand{\mlftitle}{Lista de figuras}
+	\renewcommand{\mlttitle}{Lista de tabelas}
+	\renewcommand{\nomname}{List of symbols}
 	\renewcommand{\bibname}{References}
+	\renewcommand{\appendixname}{Appendix}
+	\renewcommand{\chaptername}{Chapter}
+	\renewcommand{\figurename}{Figure}
+	\renewcommand{\tablename}{Table}
 }
 % structure
 \let\oldclearpage\clearpage
@@ -136,97 +159,202 @@
 	\newpage
 	\global\bodystyleheaderfalse
 	\global\sectioninheaderfalse
-	\pagestyle{emptystyle}
 	\titleformat{\chapter}{}{}{0pt}{\centering\bf\Large{##1}}
 	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{##1}}
 	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{##1}}
 	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{##1}}
 	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{##1}}
 	\titlespacing*{\chapter}{0pt}{-10pt}{30pt}
+	\pagenumbering{roman}
+	\setcounter{page}{1}
+	\pagestyle{emptystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
 \newcommand{\chaptersformat}{
 	\let\clearpage\oldclearpage
 	\newpage
 	\global\bodystyleheaderfalse
 	\global\sectioninheadertrue
+	\renewcommand{\thechapter}{\arabic{chapter}}
+	\renewcommand{\thesection}{\thechapter.\arabic{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+	\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{\ifnum\value{chapter}>9 5.2cm\else 3.5cm\fi}{\MakeUppercase{\Large{\chaptername}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\ifnum\value{chapter}>9\relax\dimexpr\linewidth-5.2cm-1.6pt-7ex\relax\else\dimexpr\linewidth-3.5cm-1.6pt-7ex\relax\fi}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\titlespacing*{\chapter}{0pt}{50pt}{30pt}
+	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf\chaptername\;\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
 	\pagestyle{bodystyle}
-	\ifthenelse{\equal{\doclanguage}{portuguese}}{
-		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{\ifnum\value{chapter}>9 5.2cm\else 3.5cm\fi}{\MakeUppercase{\Large{Cap\'itulo}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\ifnum\value{chapter}>9 \dimexpr\linewidth-5.2cm-1.6pt-7ex\relax\else\dimexpr\linewidth-3.5cm-1.6pt-7ex\relax\fi}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
-	}{
-		\titleformat{\chapter}[block]{\SetTracking[no ligatures={f}]{encoding=*}{40}}{\filright\parbox[b][2.2cm][t]{\ifnum\value{chapter}>9 5.2cm\else 3.5cm\fi}{\MakeUppercase{\Large{Chapter}}\raisebox{-0.8\height}{\resizebox{!}{2.2cm}{\thechapter}}}}{3ex}{\parbox[b][2.2cm]{\ifnum\value{chapter}>9 \dimexpr\linewidth-5.2cm-1.6pt-7ex\relax\else\dimexpr\linewidth-3.5cm-1.6pt-7ex\relax\fi}{\titlerule[1.5pt]\vspace{1.5ex}\vfill\endgraf\filright\bf\Large{\thechaptertitlefont ##1}\vfill}}
-	}
-	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
-	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
-	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
-	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
-	\titlespacing*{\chapter}{0pt}{50pt}{30pt}	
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
 \newcommand{\compactchaptersformat}{
 	\let\clearpage\relax
 	\FloatBarrier
 	\global\bodystyleheadertrue
 	\global\sectioninheaderfalse
-	\pagestyle{bodystyle}
-	\titleformat{\chapter}[block]{\bf\Large}{\thechapter~~}{0pt}{\bf\Large{\thechaptertitlefont ##1}}	
-	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
-	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
-	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
-	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\renewcommand{\thechapter}{\arabic{chapter}}
+	\renewcommand{\thesection}{\thechapter.\arabic{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+	\titleformat{\chapter}[block]{\bf\Large}{\thechaptertitlefont\chaptername\;\thechapter~~}{0pt}{\bf\Large{\thechaptertitlefont ##1}}
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
 	\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf\chaptername\;\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+	\pagestyle{bodystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
 \newcommand{\bibliographyformat}{
 	\let\clearpage\oldclearpage
 	\newpage
 	\global\bodystyleheaderfalse
 	\global\sectioninheaderfalse
-	\pagestyle{bibliographystyle}
-	\titleformat{\chapter}{\bf\Large}{}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
-	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\Large{\thesectiontitlefont ##1}}
-	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
-	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
-	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\renewcommand{\thechapter}{\arabic{chapter}}
+	\renewcommand{\thesection}{\thechapter.\arabic{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+	\titleformat{\chapter}{\bf\Large}{\thechaptertitlefont}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
 	\renewcommand{\bibsection}{\chapter*{\bibname}}
-	\ifthenelse{\equal{\doclanguage}{portuguese}}{
-		\addcontentsline{toc}{chapter}{\expandafter\bf Refer\^encias}
-	}{
-		\addcontentsline{toc}{chapter}{\expandafter\bf References}
-	}
+	\addcontentsline{toc}{chapter}{\expandafter\bf\bibname}
 	\bibliographystyle{unsrtnat}
 	\titlespacing*{\chapter}{0pt}{10pt}{30pt}
+	\pagestyle{bibliographystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
 \newcommand{\compactbibliographyformat}{
 	\let\clearpage\relax
 	\FloatBarrier
 	\global\bodystyleheadertrue
 	\global\sectioninheaderfalse
-	\pagestyle{bibliographystyle}
-	\titleformat{\chapter}{\bf\Large}{}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
-	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\Large{\thesectiontitlefont ##1}}
-	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
-	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
-	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\renewcommand{\thechapter}{\arabic{chapter}}
+	\renewcommand{\thesection}{\thechapter.\arabic{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+	\titleformat{\chapter}{\bf\Large}{\thechaptertitlefont}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
 	\renewcommand{\bibsection}{\chapter*{\bibname}}	
-	\ifthenelse{\equal{\doclanguage}{portuguese}}{
-		\addcontentsline{toc}{chapter}{\expandafter\bf Refer\^encias}
-	}{
-		\addcontentsline{toc}{chapter}{\expandafter\bf References}
-	}
+	\addcontentsline{toc}{chapter}{\expandafter\bf\bibname}
 	\bibliographystyle{unsrtnat}
 	\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+	\pagestyle{bibliographystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
 \newcommand{\chapterbibliographyformat}{
-	\pagestyle{bibliographystyle}
+	\renewcommand{\thechapter}{\arabic{chapter}}
+	\renewcommand{\thesection}{\thechapter.\arabic{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\;\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
 	\renewcommand{\bibsection}{\section*{\bibname}}
-	\addcontentsline{toc}{section}{References}
+	\addcontentsline{toc}{section}{\bibname}
+	\bibliographystyle{unsrtnat}
+	\pagestyle{bibliographystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
-\newcommand{\closingformat}{
+\newcommand{\appendixformat}{
+	\let\clearpage\oldclearpage
+	\newpage
+	\global\bodystyleheadertrue
+	\global\sectioninheadertrue
+	\renewcommand{\thechapter}{\Alph{chapter}}
+	\renewcommand{\thesection}{\thechapter.\arabic{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\Alph{chapter}.\arabic{equation}}
+	\titleformat{\chapter}{\bf\Large}{\thechaptertitlefont\appendixname\;\thechapter~~}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont\thesection~~}{0pt}{\bf\large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\titlespacing*{\chapter}{0pt}{10pt}{30pt}
+	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf\appendixname\;\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+	\pagestyle{bodystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
+}
+\newcommand{\compactappendixformat}{
+	\let\clearpage\relax
+	\FloatBarrier
+	\global\bodystyleheadertrue
+	\global\sectioninheaderfalse
+	\renewcommand{\thechapter}{\Alph{chapter}}
+	\renewcommand{\thesection}{\thechapter.\arabic{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\Alph{chapter}.\arabic{equation}}
+	\titleformat{\chapter}{\bf\Large}{\thechaptertitlefont\appendixname\;\thechapter~~}{0pt}{\bf\Large{\thechaptertitlefont ##1}}[]
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont\thesection~~}{0pt}{\bf\Large{\thesectiontitlefont ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf\appendixname\;\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+	\pagestyle{bodystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
+}
+\newcommand{\chapterappendixformat}{
+	\renewcommand{\thechapter}{\arabic{chapter}}
+	\renewcommand{\thesection}{\thechapter.\Alph{section}}
+	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+	\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+	\renewcommand{\theequation}{\thesection.\arabic{equation}}
+	\setcounter{equation}{0}
+	\titleformat{\section}{\bf\large}{\thesectiontitlefont\appendixname~~}{0pt}{\bf\Large{\thesectiontitlefont\thesection ##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsectiontitlefont\thesubsection~~}{0pt}{\bf\normalsize{\thesubsectiontitlefont ##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsectiontitlefont\thesubsubsection~~}{0pt}{\bf\normalsize{\thesubsubsectiontitlefont ##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraphtitlefont\theparagraph~~}{0pt}{\bf\normalsize{\theparagraphtitlefont ##1}}
+	\titlecontents{section}[0.0cm]{\vspace{0cm}}{\bf\appendixname\;\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+	\pagestyle{bodystyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
+}
+\newcommand{\closepreliminaries}{
+	\newpage
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+}
+\newcommand{\closechapters}{
+	\newpage
+	\setcounter{chapter}{0}
+}
+\newcommand{\closebibliography}{
+	\newpage
+}
+\newcommand{\closeappendices}{
+}
+\newcommand{\closedocument}{
 	\let\clearpage\oldclearpage
 }
 \newcommand{\convertchaptersintosections}{
 	\let\chaptersformat=\compactchaptersformat
 	\let\bibliographyformat=\compactbibliographyformat
-	% remove label in table of contents
-	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
+	\let\appendicesformat=\compactappendicesformat
 }
 \def\thechaptertitlefont{}
 \def\thesectiontitlefont{}
@@ -250,77 +378,32 @@
 		\addtocounter{footnote}{-1}%
 	\endgroup
 }
-\newcommand{\appendixchapter}{
-	\addcontentsline{toc}{chapter}{Appendices}
-	\chapter*{Appendices}
-	\renewcommand{\thesection}{Appendix \Alph{section}}
-	\setcounter{section}{0}
-}{}
-\newcommand{\appendixsection}{
-	\addcontentsline{toc}{section}{Appendices}
-	\section*{Appendices}
-	\renewcommand{\thesubsection}{Appendix \Alph{subsection}}
-	\setcounter{subsection}{0}
-}{}
-\newcommand{\noappendix}{
-	\renewcommand{\thesection}{\thechapter.\arabic{subsection}}
-	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-	\setcounter{section}{0}
-	\setcounter{subsection}{0}
-}{}
 % make table of contents with links
 %\usepackage{color}
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
 %\usepackage{hyperref}
 %\hypersetup{
-%    colorlinks=true, % make the links colored
-%    linkcolor=black, % color TOC links in blue
-%    urlcolor=black, % color URLs in red
-%    linktoc=all % 'all' will create links for everything in the TOC
+%	colorlinks=true, % make the links colored
+%	linkcolor=black, % color TOC links in blue
+%	urlcolor=black, % color URLs in red
+%	linktoc=all % 'all' will create links for everything in the TOC
 %}
 % no space reserved to typeset the page number
 \makeatletter
 \renewcommand\@pnumwidth{0.0cm}
 \makeatother
 % customize toc
-\ifthenelse{\equal{\doclanguage}{portuguese}}{
-	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf Cap\'itulo \thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
-}{
-	\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf Chapter \thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
-}
+\titlecontents{chapter}[0.0cm]{\vspace{0cm}}{\bf\chaptername\;\thecontentslabel~--~}{}{~\dotfill~\thecontentspage}
 \titlecontents{section}[0.5cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
 \titlecontents{subsection}[1.0cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
 \titlecontents{subsubsection}[1.5cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
 \titlecontents{paragraph}[2.0cm]{\vspace{0cm}}{\thecontentslabel~~}{}{~\dotfill~\thecontentspage}
-\ifthenelse{\equal{\doclanguage}{portuguese}}{
-	\titlecontents{figure}[2.2cm]{\vspace{0cm}\hspace{-2.2cm}}{\parbox[t]{2.2cm}{Figura \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
-	\titlecontents{table}[2.0cm]{\vspace{0cm}\hspace{-2.0cm}}{\parbox[t]{2.0cm}{Tabela \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
-}{
-	\titlecontents{figure}[2.2cm]{\vspace{0cm}\hspace{-2.2cm}}{\parbox[t]{2.2cm}{Figure \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
-	\titlecontents{table}[2.0cm]{\vspace{0cm}\hspace{-2.0cm}}{\parbox[t]{2.0cm}{Table \thecontentslabel:}}{}{~\dotfill~\thecontentspage}
-}
-\ifthenelse{\equal{\doclanguage}{portuguese}}{
-	\renewcommand{\contentsname}{\'Indice}
-	\renewcommand{\listfigurename}{Lista de figuras}
-	\renewcommand{\listtablename}{Lista de tabelas}
-}{
-	\renewcommand{\contentsname}{Table of contents}
-	\renewcommand{\listfigurename}{List of figures}
-	\renewcommand{\listtablename}{List of tables}
-}
+\titlecontents{figure}[2.2cm]{\vspace{0cm}\hspace{-2.2cm}}{\parbox[t]{2.2cm}{\figurename\;\thecontentslabel:}}{}{~\dotfill~\thecontentspage}
+\titlecontents{table}[2.0cm]{\vspace{0cm}\hspace{-2.0cm}}{\parbox[t]{2.0cm}{\tablename\;\thecontentslabel:}}{}{~\dotfill~\thecontentspage}
 % cutomize minitoc
 \setcounter{minitocdepth}{6}
 \setlength{\mtcindent}{0pt}
-\ifthenelse{\equal{\doclanguage}{portuguese}}{
-	\renewcommand{\mtctitle}{Table of contents}
-	\renewcommand{\mlftitle}{List of figures}
-	\renewcommand{\mlttitle}{List of tables}
-}{
-	\renewcommand{\mtctitle}{\'Indice}
-	\renewcommand{\mlftitle}{Lista de figuras}
-	\renewcommand{\mlttitle}{Lista de tabelas}
-}
 \renewcommand{\mtifont}{\bf\usecustomfont\normalsize}
 \renewcommand{\mtcfont}{\usecustomfont\normalsize}
 \renewcommand{\mtcSfont}{\usecustomfont\normalsize}
@@ -347,13 +430,6 @@
 % caption font
 \DeclareCaptionFont{customcaptionfont}{\linespread{1.25}\small}
 \captionsetup{font=customcaptionfont}
-\ifthenelse{\equal{\doclanguage}{portuguese}}{
-	\renewcommand{\figurename}{Figura}
-	\renewcommand{\tablename}{Tabela}
-}{
-	\renewcommand{\figurename}{Figure}
-	\renewcommand{\tablename}{Table}
-}
 % spacing
 \onehalfspacing
 % indentation length
@@ -437,24 +513,24 @@
 	% header
 	\ifsectioninheader
 		\fancyhead[RO]{
-			\ifbodystyleheader
-				\small\thesection~\currentsection
+		\ifbodystyleheader
+				\small\rightmark
 			\fi
 		}
 		\fancyhead[LE]{
 			\ifbodystyleheader
-				\small\thesection~\currentsection
+				\small\leftmark
 			\fi
 		}
 	\else
 		\fancyhead[RO]{
 			\ifbodystyleheader
-				\small\thechapter~\currentchapter
+				\small\leftmark
 			\fi
 		}
 		\fancyhead[LE]{
 			\ifbodystyleheader
-				\small\thechapter~\currentchapter
+				\small\leftmark
 			\fi
 		}
 	\fi
@@ -497,11 +573,6 @@
 	\fancyfoot[RO,LE]{\small\thepage}
 }
 % nomenclature
-\ifthenelse{\equal{\doclanguage}{portuguese}}{
-	\renewcommand{\nomname}{Lista de s\'imbolos}
-}{
-	\renewcommand{\nomname}{List of symbols}
-}
 \newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 %\newcommand{\printncl}{\begin{framed}\vspace{-0.5cm}\printnomenclature[0.8cm]\end{framed}}
 %\setlength{\nomitemsep}{-2mm}
@@ -509,30 +580,30 @@
 \renewcommand\nompostamble{\end{multicols}}
 % symbols categories
 \renewcommand\nomgroup[1]{
-  \ifthenelse{\equal{#1}{A}}{
-    \item[\hspace{-4pt}\bf{Acronyms}]
-  }{
-  \ifthenelse{\equal{#1}{R}}{
-    \item[\hspace{-4pt}\bf{Roman symbols}]
-  }{
-  \ifthenelse{\equal{#1}{G}}{
-    \item[\hspace{-4pt}\bf{Greek symbols}]
-  }{
-  \ifthenelse{\equal{#1}{S}}{
-    \item[\hspace{-4pt}\bf{Superscripts}]
-  }{
-  \ifthenelse{\equal{#1}{U}}{
-    \item[\hspace{-4pt}\bf{Subscripts}]
-  }{
-  \ifthenelse{\equal{#1}{C}}{
-    \item[\hspace{-4pt}\bf{Constants}]
-  }{
-  \ifthenelse{\equal{#1}{O}}{
-    \item[\hspace{-4pt}\bf{Operators}]
-  }{
-  \ifthenelse{\equal{#1}{X}}{
-    \item[\hspace{-4pt}\bf{Other symbols}]}
-  {{}}}}}}}}}}
+	\ifthenelse{\equal{#1}{A}}{
+		\item[\hspace{-4pt}\bf{Acronyms}]
+	}{
+	\ifthenelse{\equal{#1}{R}}{
+		\item[\hspace{-4pt}\bf{Roman symbols}]
+	}{
+	\ifthenelse{\equal{#1}{G}}{
+		\item[\hspace{-4pt}\bf{Greek symbols}]
+	}{
+	\ifthenelse{\equal{#1}{S}}{
+		\item[\hspace{-4pt}\bf{Superscripts}]
+	}{
+	\ifthenelse{\equal{#1}{U}}{
+		\item[\hspace{-4pt}\bf{Subscripts}]
+	}{
+	\ifthenelse{\equal{#1}{C}}{
+		\item[\hspace{-4pt}\bf{Constants}]
+	}{
+	\ifthenelse{\equal{#1}{O}}{
+		\item[\hspace{-4pt}\bf{Operators}]
+	}{
+	\ifthenelse{\equal{#1}{X}}{
+		\item[\hspace{-4pt}\bf{Other symbols}]}
+	{{}}}}}}}}}}
 % bibliography for each chapter
 \newcites{chapi}{References}
 \newcites{chapii}{References}

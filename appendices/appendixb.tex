@@ -1,0 +1,232 @@
+%=============================================================
+% Ricardo Costa, November, 2024
+%=============================================================
+
+\chapter{Principal curvatures and directions}
+\label{chap:appendix_principal_curvatures_and_directions}
+
+Contrarily to planar curves, the normal curvature of surfaces generally depends on the chosen direction.
+In that regard, the classical literature in differential geometry often provides curvature formulas for the Gaussian and mean curvatures at any point on the surface.
+The Gaussian curvature evaluates the rate of deviation between points on the surface (intrinsic property), while the mean curvature is a measure of the rate of deviation between the surface and the tangent plane (extrinsic property).
+Moreover, at any point on the surface, there are two intersecting lines contained on the surface with the smallest and largest radii of curvature, which are called the principal radii of curvature, while their reciprocals are called the principal curvatures.
+In that regard, the mean curvature of the surface corresponds to the average of the principal curvatures, while the Gaussian curvature corresponds to the product.
+Denote as $\kappa_{\textrm{max}}\coloneqq\kappa_{\textrm{max}}\left(\bm{x}\right)$ and $\kappa_{\textrm{min}}\coloneqq\kappa_{\textrm{min}}\left(\bm{x}\right)$ the principal curvatures and as $\kappa_{\textrm{G}}\coloneqq\kappa_{\textrm{G}}\left(\bm{x}\right)$ and $\kappa_{\textrm{M}}\coloneqq\kappa_{\textrm{M}}\left(\bm{x}\right)$ the Gaussian and mean curvatures, respectively.
+Then, from the above definitions
+\begin{equation}
+\kappa_{\textrm{G}}=\kappa_{\textrm{max}}\kappa_{\textrm{min}}
+\qquad
+\textrm{and}
+\qquad
+\kappa_{\textrm{M}}=\dfrac{\kappa_{\textrm{max}}+\kappa_{\textrm{min}}}{2},
+\end{equation}
+which are solved for the principal curvatures, yielding
+\begin{equation}
+\label{eq:appendix_gaussian_and_mean_curvatures}
+\kappa_{\textrm{max}}=\kappa_{\textrm{M}}+\sqrt{\left(\kappa_{\textrm{M}}\right)^{2}-\kappa_{\textrm{G}}}
+\qquad
+\textrm{and}
+\qquad
+\kappa_{\textrm{min}}=\kappa_{\textrm{M}}-\sqrt{\left(\kappa_{\textrm{M}}\right)^{2}-\kappa_{\textrm{G}}}.
+\end{equation}
+The associated directions (referred to as principal directions) are represented with vectors $\bs{\tau}_{\textrm{max}}\coloneqq\bs{\tau}_{\textrm{max}}\left(\bm{x}\right)$ and $\bs{\tau}_{\textrm{min}}\coloneqq\bs{\tau}_{\textrm{min}}\left(\bm{x}\right)$, respectively.
+In that regard, the maximum and minimum principal directions are assigned to the unit tangential and bi-tangential vectors, respectively, hence $\bm{t}\left(\bm{x}\right)=\left.\bs{\tau}_{\textrm{max}}\left(\bm{x}\right)\middle/\left\Vert\bs{\tau}_{\textrm{max}}\left(\bm{x}\right)\right\Vert\right.$ and $\bm{s}\left(\bm{x}\right)=\left.\bs{\tau}_{\textrm{min}}\left(\bm{x}\right)\middle/\left\Vert\bs{\tau}_{\textrm{min}}\left(\bm{x}\right)\right\Vert\right.$.
+Notice that $\bs{\tau}_{\textrm{max}}\left(\bm{x}\right)$ and $\bs{\tau}_{\textrm{min}}\left(\bm{x}\right)$ are not necessarily unitary vectors.
+Accordingly, the associated curvatures are $\kappa_{t}\left(\bm{x}\right)=\kappa_{\textrm{max}}\left(\bm{x}\right)$ and $\kappa_{s}\left(\bm{x}\right)=\kappa_{\textrm{min}}\left(\bm{x}\right)$.
+
+Since the curvature is a second-order effect, only the first- and second-order partial derivatives of the surface function are usually required to calculate the associated curvature. 
+In that regard, only regular surfaces with, at least, $C^{2}$-continuity are considered, that is, the surface must be twice continuously differentiable.
+Moreover, only analytical representations of the boundary, either parametric or implicit, are addressed in the present work, such that the required derivatives are easily obtained.
+
+\section{Parametric surfaces}
+\label{subsubsec:appendix_parametric_surfaces}
+
+Consider a parametric surface with $\bm{x}=\bm{p}\left(u,v\right)$, where $u$ and $v$ are two quantities parametrising the surface.
+Denote as $\bm{p}_{u}\coloneqq\bm{p}_{u}\left(u,v\right)$ and $\bm{p}_{v}\coloneqq\bm{p}_{v}\left(u,v\right)$ the first-order partial derivatives of $\bm{p}\left(u,v\right)$ with respect to parameters $u$ and $v$, respectively, and denote as $\bm{p}_{uu}\coloneqq\bm{p}_{uu}\left(u,v\right)$, $\bm{p}_{uv}\coloneqq\bm{p}_{uv}\left(u,v\right)$, $\bm{p}_{vv}\coloneqq\bm{p}_{vv}\left(u,v\right)$, and $\bm{p}_{vu}\coloneqq\bm{p}_{vu}\left(u,v\right)$ the second-order partial derivatives of $\bm{p}\left(u,v\right)$ with respect to $u$ and $v$, according to the indices.
+Moreover, consider matrix $\bm{T}\coloneqq\bm{T}\left(u,v\right)$ given as
+\begin{equation}
+\bm{T}=\begin{bmatrix}
+\bm{p}_{u} & \bm{p}_{v}
+\end{bmatrix}.
+\end{equation}
+
+Vectors $\bm{p}_{u}\left(u,v\right)$ and $\bm{p}_{v}\left(u,v\right)$ correspond to two tangential vectors on the surface (not necessarily unitary) and, since parameters $u$ and $v$ are assumed to be arbitrary, are not necessarily in the directions of the principal curvatures.
+On the other side, the normal unit vector on the surface, $\bm{n}\coloneqq\bm{n}\left(u,v\right)$, is easily obtained from these tangential vectors as
+\begin{equation}
+\bm{n}=\dfrac{\bm{p}_{u}\times\bm{p}_{v}}{\left\Vert\bm{p}_{u}\times\bm{p}_{v}\right\Vert},
+\end{equation}
+for which $\bm{n}_{u}\coloneqq\bm{n}_{u}\left(u,v\right)$ and $\bm{n}_{v}\coloneqq\bm{n}_{v}\left(u,v\right)$ denote the first-order partial derivatives with respect to parameters $u$ and $v$, respectively.
+Notice that the orientation of the normal vector is determined from the chosen surface parametrisation and, therefore, the previous formula does not ensure the conventional orientation, that is, outwards the domain.
+
+The classical curvature formulas for parametric surfaces usually depend on the associated first and second fundamental forms, denoted as $\bm{I}\coloneqq\bm{I}\left(u,v\right)$ and $\bm{II}\coloneqq\bm{II}\left(u,v\right)$, respectively.
+The first fundamental form, which describes the metric properties of a surface, corresponds to the inner product on the tangent space and is determined from the inner product of the first-order partial derivatives of the surface.
+On the other side, the second fundamental form (also referred to as shape tensor) corresponds to the surface quadratic form on the tangent plane and is determined from the projections of the second-order partial derivatives of the surface onto the surface normal.
+Together with the first fundamental form, the second fundamental form serves to define extrinsic invariants of the surface, such as principal curvatures.
+Based on these definitions, the first and second fundamental forms are more formally given as
+\begin{equation}
+\bm{I}
+=
+\begin{bmatrix}
+\bm{p}_{u}\cdot\bm{p}_{u} & \bm{p}_{u}\cdot\bm{p}_{v}\\
+\bm{p}_{v}\cdot\bm{p}_{u} & \bm{p}_{v}\cdot\bm{p}_{v}
+\end{bmatrix}
+\qquad
+\textrm{and}
+\qquad
+\bm{II}
+=
+\begin{bmatrix}
+\bm{p}_{uu}\cdot\bm{n} & \bm{p}_{uv}\cdot\bm{n}\\
+\bm{p}_{vu}\cdot\bm{n} & \bm{p}_{vv}\cdot\bm{n}
+\end{bmatrix}
+=
+-\begin{bmatrix}
+\bm{p}_{u}\cdot\bm{n}_{u} & \bm{p}_{u}\cdot\bm{n}_{v}\\
+\bm{p}_{v}\cdot\bm{n}_{u} & \bm{p}_{v}\cdot\bm{n}_{v}
+\end{bmatrix}.
+\end{equation}
+For the second fundamental form, notice that $\bm{p}_{u}\left(u,v\right)\cdot\bm{n}\left(u,v\right)=0$ and, therefore, differentiating this equality with respect to $u$ yields $\bm{p}_{uu}\left(u,v\right)\cdot\bm{n}\left(u,v\right)+\bm{p}_{u}\left(u,v\right)\cdot\bm{n}_{u}\left(u,v\right)=0$, from which it is deduced that $\bm{p}_{uu}\left(u,v\right)\cdot\bm{n}\left(u,v\right)=-\bm{p}_{u}\left(u,v\right)\cdot\bm{n}_{u}\left(u,v\right)$.
+The same procedure is applied for the remaining terms of the second fundamental form to establish the second matrix definition presented in the above equation.
+
+Consider parameters $E\coloneqq E\left(u,v\right)$, $F\coloneqq F\left(u,v\right)$, $G\coloneqq G\left(u,v\right)$, $L\coloneqq L\left(u,v\right)$, $M\coloneqq M\left(u,v\right)$, and $N\coloneqq N\left(u,v\right)$, which are intrinsically related with the definitions of the first and second fundamental forms, and read as
+\begin{equation}
+\begin{split}
+&E=\bm{p}_{u}\cdot\bm{p}_{u},
+\qquad
+&&F=\bm{p}_{u}\cdot\bm{p}_{v}=\bm{p}_{v}\cdot\bm{p}_{u},
+\qquad
+&&G=\bm{p}_{v}\cdot\bm{p}_{v},\\
+&L=\bm{p}_{uu}\cdot\bm{n},
+\qquad
+&&M=\bm{p}_{uv}\cdot\bm{n}=\bm{p}_{vu}\cdot\bm{n},
+\qquad
+&&N=\bm{p}_{vv}\cdot\bm{n}.
+\end{split}
+\end{equation}
+Moreover, consider the adjugate matrix (or classical adjoint matrix) of the second fundamental form, denoted as $\textrm{adj}\left(\bm{II}\right)$, which corresponds to the cofactors matrix transpose, that is
+\begin{equation}
+\textrm{adj}\left(\bm{II}\right)
+=
+\begin{bmatrix}
+\bm{p}_{vv}\cdot\bm{n} & -\bm{p}_{vu}\cdot\bm{n}\\
+-\bm{p}_{uv}\cdot\bm{n} & \bm{p}_{uu}\cdot\bm{n}
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\bm{p}_{v}\cdot\bm{n}_{v} & \bm{p}_{v}\cdot\bm{n}_{u}\\
+\bm{p}_{u}\cdot\bm{n}_{v} & -\bm{p}_{u}\cdot\bm{n}_{u}
+\end{bmatrix}.
+\end{equation}
+Then, with some algebraic manipulations, several equivalent formulas are derived for the Gaussian and mean curvatures at a given point on the surface, given as
+\begin{align}
+\kappa_{\textrm{G}}
+&=\dfrac{\textrm{det}\left(\bm{II}\right)}{\textrm{det}\left(\bm{I}\right)}
+=\frac{LN-M^{2}}{EG-F^{2}}
+=\dfrac{\left(\bm{p}_{u}\times\bm{p}_{v}\right)\cdot\left(\bm{n}_{u}\times\bm{n}_{v}\right)}{\left\Vert\bm{p}_{u}\times\bm{p}_{v}\right\Vert^{2}},\\
+\kappa_{\textrm{M}}
+&=\dfrac{\textrm{trace}\left(\bm{I}\,\textrm{adj}\left(\bm{II}\right)\right)}{2\,\textrm{det}\left(\bm{I}\right)}
+=\frac{EN+GL-2FM}{2\left(EG-F^{2}\right)}
+=\dfrac{\left(\bm{p}_{u}\times\bm{p}_{v}\right)\cdot\left(\left(\bm{p}_{v}\times\bm{n}_{u}\right)-\left(\bm{p}_{u}\times\bm{n}_{v}\right)\right)}{2\left\Vert\bm{p}_{u}\times\bm{p}_{v}\right\Vert^{2}},
+\end{align}
+respectively.
+The principal curvatures are easily obtained from the Gaussian and mean curvatures using the corresponding definitions~\cref{eq:appendix_gaussian_and_mean_curvatures}.
+On the other side, the principal directions are determined from the corresponding slopes in the bi-dimensional $uv$-plane, denoted as $\lambda_{\textrm{max}}\coloneqq\lambda_{\textrm{max}}\left(u,v\right)$ and $\lambda_{\textrm{min}}\coloneqq\lambda_{\textrm{min}}\left(u,v\right)$, given as
+\begin{equation}
+\lambda_{\textrm{max}}
+=-\frac{M-\kappa_{\textrm{max}}F}{N-\kappa_{\textrm{max}}G}
+=-\frac{L-\kappa_{\textrm{max}}E}{M-\kappa_{\textrm{max}}F}
+\qquad
+\textrm{and}
+\qquad
+\lambda_{\textrm{min}}
+=-\frac{M-\kappa_{\textrm{min}}F}{N-\kappa_{\textrm{min}}G}
+=-\frac{L-\kappa_{\textrm{min}}E}{M-\kappa_{\textrm{min}}F},
+\end{equation}
+which are represented with vectors $\bm{v}_{\textrm{max}}\coloneqq\bm{v}_{\textrm{max}}\left(u,v\right)=\left(1,\lambda_{\textrm{max}}\right)^{\textrm{T}}$ and $\bm{v}_{\textrm{min}}\coloneqq\bm{v}_{\textrm{min}}\left(u,v\right)=\left(1,\lambda_{\textrm{min}}\right)^{\textrm{T}}$, and transformed to the three-dimensional space as $\bs{\tau}_{\textrm{max}}\left(u,v\right)=\bm{T}\left(u,v\right)\bm{v}_{\textrm{max}}\left(u,v\right)$ and $\bs{\tau}_{\textrm{min}}\left(u,v\right)=\bm{T}\left(u,v\right)\bm{v}_{\textrm{min}}\left(u,v\right)$.
+
+Consider the so-called Weingarten matrix, denoted as $\bm{W}\coloneqq\bm{W}\left(u,v\right)$, given as $\bm{W}\left(u,v\right)=\bm{II}\left(u,v\right)\bm{I}^{-1}\left(u,v\right)$ based on the first and second fundamental forms, which admits an eigendecomposition in the form $\bm{W}\left(u,v\right)\bm{v}\left(u,v\right)=\lambda\left(u,v\right)\bm{v}\left(u,v\right)$ with eigenvalues $\lambda\coloneqq\lambda\left(u,v\right)\in\lbrace\lambda_{1}\left(u,v\right),\lambda_{2}\left(u,v\right)\rbrace$ and eigenvectors $\bm{v}\coloneqq\bm{v}\left(u,v\right)\in\lbrace\bm{v}_{1}\left(u,v\right),\bm{v}_{2}\left(u,v\right)\rbrace$.
+Then, the eigenvalues of the Weingarten matrix correspond to the principal curvatures, hence $\kappa_{\textrm{max}}\left(u,v\right)=\lambda_{1}\left(u,v\right)$ and $\kappa_{\textrm{min}}\left(u,v\right)=\lambda_{2}\left(u,v\right)$ assuming that $\lambda_{1}\left(u,v\right)\geq\lambda_{2}\left(u,v\right)$.
+On the other side, the associated eigenvectors correspond to the principal directions represented in the bi-dimensional $uv$-plane, which are transformed to the three-dimensional space as $\bs{\tau}_{\textrm{max}}\left(u,v\right)=\bm{T}\left(u,v\right)\bm{v}_{1}\left(u,v\right)$ and $\bs{\tau}_{\textrm{min}}\left(u,v\right)=\bm{T}\left(u,v\right)\bm{v}_{2}\left(u,v\right)$.
+
+Although the latter procedure avoids the calculation of the intermediate Gaussian and mean curvatures, a robust eigendecomposition algorithm is required to prevent loss of precision, particularly at (nearly) umbilical and planar points.
+Nevertheless, having alternative formulas for the computation of the principal curvatures allows double-checking the correct implementation of these formulas, especially in complex parametrised surfaces.
+
+\section{Implicit surfaces}
+\label{subsubsec:appendix_implicit_surfaces}
+
+Consider an implicit surface given with $\phi\left(\bm{x}\right)=0$, and denote as $\bm{G}\coloneqq\bm{G}\left(\bm{x}\right)$ and $\bm{H}\coloneqq\bm{H}\left(\bm{x}\right)$ the gradient vector and Hessian matrix of function $\phi\left(\bm{x}\right)$, respectively, given as
+\begin{equation}
+\bm{G}
+=
+\begin{bmatrix}
+\dfrac{\partial\phi}{\partial x} & \dfrac{\partial\phi}{\partial y} & \dfrac{\partial\phi}{\partial z}
+\end{bmatrix}^{\textrm{T}}
+\qquad
+\textrm{and}
+\qquad
+\bm{H}
+=
+\begin{bmatrix}
+\dfrac{\partial^{2}\phi}{\partial x^{2}} & \dfrac{\partial^{2}\phi}{\partial y^{2}} & \dfrac{\partial^{2}\phi}{\partial z^{2}}\\
+\dfrac{\partial^{2}\phi}{\partial y\partial x} & \dfrac{\partial^{2}\phi}{\partial y^{2}} & \dfrac{\partial^{2}\phi}{\partial y\partial z}\\
+\dfrac{\partial^{2}\phi}{\partial z\partial x} & \dfrac{\partial^{2}\phi}{\partial z\partial y} & \dfrac{\partial^{2}\phi}{\partial z^{2}}\\
+\end{bmatrix}.
+\end{equation}
+
+The unit normal vector on the surface, denoted as $\bm{n}\coloneqq\bm{n}\left(\bm{x}\right)$, can be easily obtained as
+\begin{equation}
+\bm{n}=\dfrac{\bm{G}}{\left\Vert\bm{G}\right\Vert}.
+\end{equation}
+As for parametric surfaces, the orientation of the normal vector is determined from the chosen surface equation, and, therefore, the previous formula does not ensure the conventional orientation, that is, outwards the domain.
+In particular, if $\phi\left(\bm{x}\right)>0$ for any point outside the domain, then the normal vector provided from the previous formula is oriented outwards.
+
+The literature on the curvature calculation for implicit surfaces is scarcer than for parametric surfaces.
+Consider the adjugate matrix (or classical adjoint matrix) of the Hessian matrix, denoted as $\textrm{adj}\left(\bm{H}\right)$, which corresponds to the cofactors matrix transpose, that is
+\begin{equation}
+\textrm{adj}\left(\bm{H}\right)
+=
+\begin{bmatrix}
+H_{22}H_{33}-H_{23}H_{32} & H_{13}H_{32}-H_{12}H_{33} & H_{12}H_{23}-H_{13}H_{22}\\
+H_{23}H_{31}-H_{21}H_{33} & H_{11}H_{33}-H_{13}H_{31} & H_{21}H_{13}-H_{11}H_{23} \\
+H_{21}H_{32}-H_{22}H_{31} & H_{12}H_{31}-H_{11}H_{32} & H_{11}H_{22}-H_{12}H_{21}
+\end{bmatrix},
+\end{equation}
+where $H_{ij}\coloneqq H_{ij}\left(\bm{x}\right)$, $i,j\in\lbrace 1,2,3\rbrace$, correspond to the second-order partial derivatives in the Hessian matrix.
+Then, the Gaussian and mean curvatures at a given point on the surface are obtained as
+\begin{equation}
+\kappa_{\textrm{G}}=\dfrac{\bm{G}\,\textrm{adj}\left(\bm{H}\right)\bm{G}^{\textrm{T}}}{\left\Vert\bm{G}\right\Vert^{4}}
+\qquad
+\textrm{and}
+\qquad
+\kappa_{\textrm{M}}=\dfrac{\bm{G}\bm{H}\bm{G}^{\textrm{T}}-\left\Vert\bm{G}\right\Vert^{2}\,\textrm{trace}\left(\bm{H}\right)}{2\left\Vert\bm{G}\right\Vert^{3}}.
+\end{equation}
+The principal curvatures are easily obtained from the Gaussian and mean curvatures using the corresponding definitions~\cref{eq:appendix_gaussian_and_mean_curvatures}.
+
+In some works, where only the mean curvature is necessary, an alternative formula is often employed based on the divergence of the unit normal vector, given as
+\begin{equation}
+\kappa_{\textrm{M}}=-\frac{1}{2}\nabla\cdot\bm{n}=-\frac{1}{2}\nabla\cdot\Biggl(\dfrac{\nabla\phi}{\left\Vert\nabla\phi\right\Vert}\Biggr),
+\end{equation}
+which is shorter and simpler than the previous formula.
+Nevertheless, when the Gaussian or principal curvatures are also required, the gradient vector and the Hessian matrix still need to be computed.
+
+Consider two orthonormal tangential vectors on the surface, denoted as $\bs{\tau}_{1}\coloneqq\bs{\tau}_{1}\left(\bm{x}\right)$ and $\bs{\tau}_{2}\coloneqq\bs{\tau}_{2}\left(\bm{x}\right)$, hence also orthonormal to the normal vector.
+The choice of these tangential vectors is arbitrary and, therefore, a simple technique consists in choosing a random vector $\bs{\tau}_{0}$ and, then, computing vectors $\bs{\tau}_{1}\left(\bm{x}\right)=\bs{n}\left(\bm{x}\right)\times\bs{\tau}_{0}$ and $\bs{\tau}_{2}\left(\bm{x}\right)=\bs{n}\left(\bm{x}\right)\times\bs{\tau}_{1}\left(\bm{x}\right)$.
+Such a technique requires that vector $\bs{\tau}_{0}$ is non-collinear with the normal vector, for instance, one of the canonical basis vectors.
+Moreover, consider matrix $\bm{T}\coloneqq\bm{T}\left(\bm{x}\right)$ given as
+\begin{equation}
+\bm{T}=\begin{bmatrix}
+\bs{\tau}_{1} & \bs{\tau}_{2}
+\end{bmatrix},
+\end{equation}
+and matrix $\bm{A}\coloneqq\bm{A}\left(\bm{x}\right)$ given as
+\begin{equation}
+\bm{A}=\frac{\bm{T}^{\textrm{T}}\bm{H}\bm{T}}{\left\Vert\bm{H}\right\Vert},
+\end{equation}
+which admits an eigendecomposition in the form $\bm{A}\left(\bm{x}\right)\bm{v}\left(\bm{x}\right)=\lambda\left(\bm{x}\right)\bm{v}\left(\bm{x}\right)$ with eigenvalues $\lambda\coloneqq\lambda\left(\bm{x}\right)\in\lbrace\lambda_{1}\left(\bm{x}\right),\lambda_{2}\left(\bm{x}\right)\rbrace$ and eigenvectors $\bm{v}\coloneqq\bm{v}\left(\bm{x}\right)\in\lbrace\bm{v}_{1}\left(\bm{x}\right),\bm{v}_{2}\left(\bm{x}\right)\rbrace$.
+Similarly to parametric surfaces, the eigenvalues correspond to the principal curvatures, hence $\kappa_{\textrm{max}}\left(\bm{x}\right)=\lambda_{1}\left(\bm{x}\right)$ and $\kappa_{\textrm{min}}\left(\bm{x}\right)=\lambda_{2}\left(\bm{x}\right)$ assuming that $\lambda_{1}\left(\bm{x}\right)\geq\lambda_{2}\left(\bm{x}\right)$.
+On the other side, the associated eigenvectors correspond to the principal directions represented in the bi-dimensional space, which are transformed to the three-dimensional space as $\bs{\tau}_{\textrm{max}}\left(\bm{x}\right)=\bm{T}\left(\bm{x}\right)\bm{v}_{1}\left(\bm{x}\right)$ and $\bs{\tau}_{\textrm{min}}\left(\bm{x}\right)=\bm{T}\left(\bm{x}\right)\bm{v}_{2}\left(\bm{x}\right)$.
+
+A point $\bm{p}$ on the surface is called umbilical if its principal curvatures are equal, that is $\kappa_{\textrm{max}}\left(\bm{p}\right)=\kappa_{\textrm{min}}\left(\bm{p}\right)$, meaning that the surface bends the same amount in all directions and, consequently, every tangent vector at $\bm{p}$ represents a principal direction.
+Umbilical points can be regarded as points that locally represent either a plane ($\kappa_{\textrm{max}}\left(\bm{p}\right)=\kappa_{\textrm{min}}\left(\bm{p}\right)=0$) or a spherical surface ($\kappa_{\textrm{max}}\left(\bm{p}\right)=\kappa_{\textrm{min}}\left(\bm{p}\right)\neq 0$).
+Since umbilical points are singularities of the principal directions, a robust implementation of the classical formulas presented above is necessary to appropriately address indeterminate solutions.
+
+% end of file
