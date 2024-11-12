@@ -167,7 +167,7 @@
 	\titlespacing*{\chapter}{0pt}{-10pt}{30pt}
 	\pagenumbering{roman}
 	\setcounter{page}{1}
-	\pagestyle{emptystyle}
+	\pagestyle{preliminariesstyle}
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
 	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
@@ -334,6 +334,21 @@
 	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
 	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
 }
+\newcommand{\colophonformat}{
+	\let\clearpage\oldclearpage
+	\newpage
+	\global\bodystyleheaderfalse
+	\global\sectioninheaderfalse
+	\titleformat{\chapter}{}{}{0pt}{\centering\bf\Large{##1}}
+	\titleformat{\section}{\bf\large}{\thesection~~}{0pt}{\bf\large{##1}}
+	\titleformat{\subsection}{\bf\normalsize}{\thesubsection~~}{0pt}{\bf\normalsize{##1}}
+	\titleformat{\subsubsection}{\bf\normalsize}{\thesubsubsection~~}{0pt}{\bf\normalsize{##1}}
+	\titleformat{\paragraph}{\bf\normalsize}{\theparagraph~~}{0pt}{\bf\normalsize{##1}}
+	\titlespacing*{\chapter}{0pt}{-10pt}{30pt}
+	\pagestyle{colophonstyle}
+	\renewcommand{\chaptermark}[1]{\markboth{\thechapter~~##1}{\thechapter~~##1}}
+	\renewcommand{\sectionmark}[1]{\markright{\thesection~~##1}}
+}
 \newcommand{\closepreliminaries}{
 	\newpage
 	\pagenumbering{arabic}
@@ -347,6 +362,9 @@
 	\newpage
 }
 \newcommand{\closeappendices}{
+	\newpage
+}
+\newcommand{\closecolophon}{
 }
 \newcommand{\closedocument}{
 	\let\clearpage\oldclearpage
@@ -495,6 +513,23 @@
 % enable/disable page header rule 
 \newif\ifbodystyleheader
 % create header and footer style
+\fancypagestyle{preliminariesstyle}{
+	% font size
+	\normalfont
+	% clear header and footer
+	\fancyhead{}
+	\fancyfoot{}
+	% rules
+	\renewcommand{\headrulewidth}{0.0pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+	% header
+	%\fancyhead[RO]{\small\doctitle}
+	%\fancyhead[LE]{\small\doctitle}
+	% footer
+	%\fancyfoot[LO,RE]{\small}
+	\fancyfoot[RO,LE]{\small\thepage}
+}
+% create header and footer style
 \fancypagestyle{bodystyle}{
 	% font size
 	\normalfont
@@ -555,8 +590,7 @@
 	%\fancyfoot[LO,RE]{\small}
 	\fancyfoot[RO,LE]{\small\thepage}
 }
-% create header and footer style
-\fancypagestyle{emptystyle}{
+\fancypagestyle{colophonstyle}{
 	% font size
 	\normalfont
 	% clear header and footer
@@ -564,13 +598,13 @@
 	\fancyfoot{}
 	% rules
 	\renewcommand{\headrulewidth}{0.0pt}
-	\renewcommand{\footrulewidth}{0.5pt}
+	\renewcommand{\footrulewidth}{0.0pt}
 	% header
 	%\fancyhead[RO]{\small\doctitle}
 	%\fancyhead[LE]{\small\doctitle}
 	% footer
 	%\fancyfoot[LO,RE]{\small}
-	\fancyfoot[RO,LE]{\small\thepage}
+	%\fancyfoot[RO,LE]{\small\thepage}
 }
 % nomenclature
 \newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
