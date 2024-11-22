@@ -1,8 +1,8 @@
 # UMinho Thesis Template
 
-_UMinho Thesis Template_ is a LaTeX template for academic works formatted according to the rules for **doctoral theses and master works (dissertations, internship reports, projects, etc.)** from the University of Minho officially published in "Despacho RT-31/2019". It is recommended to read the official documents in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) carefully and check whether modifications to the formatting rules currently in this template have been recently introduced.
+_UMinho Thesis Template_ is a LaTeX template for academic works formatted according to the rules for **doctoral theses and master's dissertations, internship reports, projects, etc.,** from the University of Minho officially published in "Despacho RT-31/2019". It is recommended to read the official documents in [UMinho Thesis Official](https://github.com/ricardodpcosta/UMinhoThesisOfficial) carefully and check whether modifications to the formatting rules currently in this template have been recently introduced.
 
-Below you can find a tutorial with a sequence of steps to help you adapt this template to your work, and more instructions are provided in the included files. Follow the steps and ensure the template compiles without errors after the necessary changes are made according to the instructions.
+Below you can find a tutorial with a sequence of steps to help you adapt this template to your work, and more instructions are provided in the included files. Please follow the steps and ensure the template compiles without errors after the necessary changes are made according to the instructions.
 
 <p align="center">
   <img src="covers/doctoral_front_cover.svg" alt="doctoral_front_cover" width="60%"/>
