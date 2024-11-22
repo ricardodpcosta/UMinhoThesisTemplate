@@ -157,7 +157,7 @@ Below you can find a tutorial with a sequence of steps to help you adapt this te
 
 ---
 
-# Chapters and sections
+## Chapters and sections
 
 - There are two formats for the chapters (plain chapters and article chapters), which you can choose from the provided templates below.
 
