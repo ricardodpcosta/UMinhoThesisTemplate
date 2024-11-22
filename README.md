@@ -28,7 +28,7 @@ Below you can find a tutorial with a sequence of steps to help you adapt this te
 
 - Executing the bash script `makemain.sh` for cross-references of bibliography entries to be correctly generated and referenced in the generated PDF document.
 
-- Recommended LaTeX editor is [Texmaker](https://www.xm1math.net/texmaker/) and this template is also available in Overleaf.
+- The recommended desktop LaTeX editor is [Texmaker](https://www.xm1math.net/texmaker/) and the recommended collaborative online LaTeX editor is [Overleaf](https://www.overleaf.com/).
 
 ---
 
