@@ -14,7 +14,7 @@ Below you can find a tutorial with a sequence of steps to help you adapt this te
 
 ---
 
-## Compilation
+## Typesetting and compilation
 
 - This template uses LaTeX typesetting and requires `pdflatex` and `bibtex` commands for compilation.
 
@@ -30,9 +30,13 @@ Below you can find a tutorial with a sequence of steps to help you adapt this te
 
 - The recommended desktop LaTeX editor is [Texmaker](https://www.xm1math.net/texmaker/) and the recommended collaborative online LaTeX editor is [Overleaf](https://www.overleaf.com/).
 
+<p align="center">
+  <img src="preamble/gallery/texmaker.png" alt="master_front_cover" width="60%" style="border:thick solid black;"/>
+</p>
+
 ---
 
-## Structure
+## Structure and organisation
 
 - In `preamble/`, the template formatting rules with the necessary packages and commands are defined. These files should not be usually modified at the risk of breaking the document format. If certain packages and commands, other than the ones already included and defined in the template, are necessary to meet specific the needs of your document, consider doing so in `main.tex`.
 
