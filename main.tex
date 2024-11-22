@@ -3,13 +3,13 @@
 %=============================================================
 % READ ME
 %------------------------------------------------------------------------------------
-% - This is a LaTeX template for academic works formatted according to the rules for doctoral theses
-% and master works (dissertations, internship reports, projects, etc.) from the University of Minho
-% officially published in "Despacho RT-31/2019"
+% - This is a LaTeX template for academic works formatted according to the rules for doctoral theses,
+% master's dissertations, internship reports, projects, etc., from the University of Minho officially
+% published in "Despacho RT-31/2019"
 % - It is recommended to read carefully the official documents in folder UMinhoThesisOfficial and
 % check whether modifications to the formatting rules currently in this template have been introduced
 % - Below you can find a tutorial with a sequence of steps to guide you in adapting this template to
-% your work, and further instructions are provided in the included files
+% your work and further instructions are provided in the included files
 % - Follow the steps and make sure the template compiles without errors after the necessary changes
 % are made according to the instructions
 % - Make sure you have LaTeX installed on your computer and run the command "pdflatex main" on
@@ -52,16 +52,16 @@
 %------------------------------------------------------------------------------------
 % 1.1 - Covers and title pages used in this template are generated outside LaTeX and then included
 % into the compiled PDF document
-% 1.2 - Templates for the covers in SVG format for doctoral theses and master works are provided,
+% 1.2 - Templates for the covers in SVG format for doctoral theses and master's works are provided,
 % which can be edited with the appropriate software (Inkscape, etc.) and then saved in PDF format
 % 1.3 - Make sure the official font (NewsGotT) is installed on your computer before editing the cover
 % templates (the source font files are provided in UMinhoThesisOfficial for installation)
-% 1.4 - Choose below the cover and the title page for your work (doctoral thesis or master work)
-% and comment the predefined selection as necessary
+% 1.4 - Choose below the cover and the title page for your work (doctoral thesis or master's work)
+% and comment out the predefined selection as necessary
 % 1.4 - Edit the corresponding SVG files available in folder covers/ with your personal and work
-% data as necessary (author name, work title, work date, academic course, supervisors names, etc.)
-% 1.5 - Save in the same folder the edited SVG files in PDF format (only change the extension)
-% 1.6 - Additional covers for others UOEIs are provided in UMinhoThesisOfficial in AI format to be
+% data as necessary (author name, work title, work date, academic course, supervisors' names, etc.)
+% 1.5 - Save the edited SVG files in PDF format in the same folder (only change the extension)
+% 1.6 - Additional covers for other UOEIs are provided in UMinhoThesisOfficial in AI format to be
 % edited and converted to PDF format and saved in folder covers/
 %------------------------------------------------------------------------------------
 % select font
@@ -81,9 +81,9 @@
 %=============================================================
 % STEP 2 - PRELIMINARIES
 %------------------------------------------------------------------------------------
-% 2.1 - The following pages are required to be included in the doctoral theses and master works,
-% with the exception of the acknowledgements and the publications and awards sections
-% 2.2 - Comment the line of the acknowledgements and the publications and awards if you do not
+% 2.1 - The following pages are required to be included in the doctoral theses and master's works,
+% except for the acknowledgements and the publications and awards sections
+% 2.2 - Comment out the line of the acknowledgements and the publications and awards if you do not
 % want them to be included in the generated PDF document
 % 2.3 - Open each of the files below, edit the personal and work data as necessary, and follow the
 % instructions provided to complete the required information
@@ -94,7 +94,7 @@
 % list of tables, comment both the commands \dominilot and \listoftables, otherwise an empty list
 % will be generated)
 %------------------------------------------------------------------------------------
-% do not comment of modify
+% do not comment or modify
 \preliminariesformat
 %------------------------------------------------------------------------------------
 % leave this uncommented for the preliminaries
@@ -120,34 +120,34 @@
 % leave this uncommented for the nomenclature
 \printnomenclature
 %------------------------------------------------------------------------------------
-% do not comment of modify
+% do not comment or modify
 \closepreliminaries
 %=============================================================
 % STEP 3 - CHAPTERS AND SECTIONS
 %------------------------------------------------------------------------------------
 % 3.1 - There are two formats for the chapters (plain chapters and article chapters), which you can
 % choose from the provided templates below
-% 3.2 - Plain chapters have their sections begining on the same page as the title, article chapters
+% 3.2 - Plain chapters have their sections beginning on the same page as the title, article chapters
 % have an abstract and keywords on the first page while sections begin on the next page
 % 3.3 - Article chapters are more appropriate when your work is based on articles or when you want
-% to include a general introduction/motivation to the topic before actually starting developing it
+% to include a general introduction/motivation to the topic before actually starting to develop it
 % 3.4 - Each chapter corresponds to a different folder named chap1, chap2, chap3, etc., where the
-% necessary sections, bibliography, figures, etc. are included for the sake of organization
+% necessary sections, bibliography, figures, etc. are included for the sake of the organization
 % 3.5 - You can find below a template for a plain chapter (chap1) and an article chapter (chap2) that
 % you can adapt to your work
 % 3.6 - Comment/uncomment the chapters as necessary and duplicate the provided template folders
 %  to create new chapters for your work
 % 3.6 - Open each of the chapters below and follow the instructions provided
 %------------------------------------------------------------------------------------
-% leave this uncommented for the Chapter 1
+% leave this uncommented for Chapter 1
 \chapterformat
 \input{chap1/chap1.tex}
 %------------------------------------------------------------------------------------
-% leave this uncommented for the Chapter 2
+% leave this uncommented for Chapter 2
 \chapterformat
 \input{chap2/chap2.tex}
 %------------------------------------------------------------------------------------
-% do not comment of modify
+% do not comment or modify
 \closechapters
 %=============================================================
 % STEP 4 - BIBLIOGRAPHY
@@ -157,7 +157,7 @@
 % templates below
 % 4.2 - Bibitems consists of a list of bibliography items supplied with the command \bibitem, which
 % later can be referenced with the command \cite
-% 4.3 - It is the simplest approach of creating a bibliography for your work, but you have to manually
+% 4.3 - It is the simplest approach or creating a bibliography for your work, but you have to manually
 % formatting the bibliographic entries according to some style you chose
 % 4.4 - Moreover, the reference numbers are attributed according to the order they are provided to
 % LaTeX (and not according to the order of citation), and all the bibliographic entries are present in
@@ -167,7 +167,7 @@
 %------------------------------------------------------------------------------------
 % 4.6 - BibTeX consists of a bibliography database of formatting independent information of the
 % references for the work
-% 4.7 - Each bibliographic entry has a given type (article, book, inproceedings, etc.) to determine the
+% 4.7 - Each bibliographic entry has a given type (article, book, proceedings, etc.) to determine the
 % automatic formatting of the reference in the generated PDF document
 % 4.8 - Moreover, the reference numbers are attributed according to the order they are cited (and
 % not according to the order they are provided to LaTeX), and only the cited bibliographic entries are
@@ -176,7 +176,7 @@
 % cross-references of bibliographic entries to be correctly generated and referenced in the generated
 % PDF document
 % 4.10 - Several bibliography files can be provided to the command \bibliography separated with
-% commas, and the file extension .bib is required for the bibliography databases
+% commas and the file extension .bib is required for the bibliography databases
 %------------------------------------------------------------------------------------
 % 4.11 - Sortedbib is similar to Bibitems, but the command \bibitem needs to be replaced with
 % \addbib and the command \cite needs to be replaced with \citebib (you need to perform these
@@ -198,8 +198,8 @@
 % BibTeX needs to be used since the other approaches are not capable of producing the same results
 % 4.18 - The compilation becomes more complex as several stages are required and, therefore,
 % running the script "./makemain.sh" provided in this template folder for Unix-based systems is
-% easier than to manually executing all the compilation steps required
-% 4.19 - If using individual bibliographies for the chapters, leave commented all the commands
+% easier than manually executing all the compilation steps required
+% 4.19 - If using individual bibliographies for the chapters, leave commented out all the commands
 % provided below and uncomment the corresponding commands provided in each chapter
 %------------------------------------------------------------------------------------
 % leave this uncommented for the bibliography with Bibitems
@@ -218,14 +218,14 @@
 %\printbib
 %\end{thebibliography}
 %------------------------------------------------------------------------------------
-% do not comment of modify
+% do not comment or modify
 \closebibliography
 %=============================================================
 % STEP 5 - APPENDICES
 %------------------------------------------------------------------------------------
 % 5.1 – Appendices should appear after the bibliography and should be named "Appendix A",
 % "Appendix B", and so on in the order that the information is mentioned in the document
-% 5.2 - Appendices can be introduced as regular chapters with sections, subsections, subsubsections
+% 5.2 - Appendices can be introduced as regular chapters with sections, subsections, subsubsections,
 % and paragraphs and can contain figures, tables, and equations
 %------------------------------------------------------------------------------------
 % leave this uncommented for the Appendix A
