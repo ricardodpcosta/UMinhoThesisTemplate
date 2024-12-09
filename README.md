@@ -5,11 +5,11 @@ _UMinho Thesis Template_ is a LaTeX template for academic works formatted accord
 Below you can find a tutorial with a sequence of steps to help you adapt this template to your work, and more instructions are provided in the included files. Please follow the steps and ensure the template compiles without errors after the necessary changes are made according to the instructions.
 
 <p align="center">
-  <img src="covers/doctoral_front_cover.svg" alt="doctoral_front_cover" width="60%"/>
+  <img src="covers/doctoral_front_cover.svg" alt="doctoral_front_cover" width="70%"/>
 </p>
 
 <p align="center">
-  <img src="covers/master_front_cover.svg" alt="master_front_cover" width="60%" style="border:thick solid black;"/>
+  <img src="covers/master_front_cover.svg" alt="master_front_cover" width="70%" style="border:thick solid black;"/>
 </p>
 
 ---
@@ -33,11 +33,11 @@ Below you can find a tutorial with a sequence of steps to help you adapt this te
 - This template can be directly copied from the associated [Overleaf project](https://www.overleaf.com/read/gtkmkxxhntzt#2e3f27).
 
 <p align="center">
-  <img src="preamble/gallery/texmaker.png" alt="master_front_cover" width="60%" style="border:thick solid black;"/>
+  <img src="preamble/gallery/texmaker.png" alt="master_front_cover" width="70%"/>
 </p>
 
 <p align="center">
-  <img src="preamble/gallery/overleaf.png" alt="master_front_cover" width="60%" style="border:thick solid black;"/>
+  <img src="preamble/gallery/overleaf.png" alt="master_front_cover" width="70%"/>
 </p>
 
 ---
