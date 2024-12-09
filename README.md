@@ -30,7 +30,7 @@ Below you can find a tutorial with a sequence of steps to help you adapt this te
 
 - The recommended desktop LaTeX editor is [Texmaker](https://www.xm1math.net/texmaker/) and the recommended collaborative online LaTeX editor is [Overleaf](https://www.overleaf.com/).
 
-- This template can be directly copied from the associated [Overleaf project](https://www.overleaf.com/read/gtkmkxxhntzt#2e3f27).
+- This template can be cloned directly to your Overleaf account from the associated [Overleaf project](https://www.overleaf.com/read/rtbybfrdpqbv#0a7cd0).
 
 <p align="center">
   <img src="preamble/gallery/texmaker.png" alt="master_front_cover" width="70%"/>
