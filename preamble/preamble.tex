@@ -118,7 +118,7 @@
 	\renewcommand{\sfdefault}{newsgott}
 	\renewcommand{\familydefault}{\sfdefault}
 }
-\newcommand{\textbff}[1]{
+\renewcommand{\textbf}[1]{
 	{\usefont{T1}{newsgott}{m}{b}#1}
 }
 \renewcommand{\bf}{
@@ -385,10 +385,10 @@
 \newcommand{\subsubsectiontitlefont}[1]{\def\thesubsubsectiontitlefont{#1}}
 \newcommand{\paragraphtitlefont}[1]{\def\theparagraphtitlefont{#1}}
 \renewcommand{\thesection}{\thechapter.\arabic{section}}
-\newenvironment{abstractkeywords}{\noindent\textbff{Keywords:}}{\newpage}
-\newenvironment{resumopalavraschave}{\noindent\textbff{Palavras-chave:}}{\newpage}
-\newenvironment{chapterabstract}{\addcontentsline{toc}{section}{Abstract}\noindent\textbff{Abstract:}}{}
-\newenvironment{chapterkeywords}{\noindent\textbff{Keywords:}}{\newpage}
+\newenvironment{abstractkeywords}{\noindent\textbf{Keywords:}}{\newpage}
+\newenvironment{resumopalavraschave}{\noindent\textbf{Palavras-chave:}}{\newpage}
+\newenvironment{chapterabstract}{\addcontentsline{toc}{section}{Abstract}\noindent\textbf{Abstract:}}{}
+\newenvironment{chapterkeywords}{\noindent\textbf{Keywords:}}{\newpage}
 \newcommand\blfootnote[1]{%
 	\begingroup
 		\renewcommand\thefootnote{}
