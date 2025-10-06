@@ -32,4 +32,4 @@ makeindex main.nlo -s nomencl.ist -o main.nls;
 pdflatex main;
 pdflatex main;
 
-#end of file
+# end of file
